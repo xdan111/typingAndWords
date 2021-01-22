@@ -1,0 +1,14 @@
+.focused {
+background: burlywood;
+}
+.red {
+    color: red;
+}
+.green {
+	color: green;
+}
+.yellow{
+	color: #EE7752;
+	font-style: italic;
+	font-size: larger;
+}

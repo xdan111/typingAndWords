@@ -1,0 +1,268 @@
+#centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+
+  
+  opacity:0;  /* make things invisible upon start */
+  -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+  -moz-animation:fadeIn ease-in 1;
+  animation:fadeIn ease-in 1;
+
+  -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+  -moz-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+
+  -webkit-animation-duration:1s;
+  -moz-animation-duration:1s;
+  animation-duration:1s;
+}
+
+@-webkit-keyframes fadeIn { from { opacity:0; opacity: 1\9; /* IE9 only */ } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; opacity: 1\9; /* IE9 only */ } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; opacity: 1\9; /* IE9 only */ } to { opacity:1; } }
+
+.neon {
+  color: #ffffcc;
+  text-shadow: 0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 20px green,
+    0 0 30px green,
+    0 0 40px green,
+    0 0 55px green,
+    0 0 70px green;
+}
+p, h4 {
+  margin: 0px;
+  padding: 0;
+}
+
+#firstChar {
+  color: #8A2BE2;
+  font-size: 110%;
+  animation-fill-mode: forwards;
+}
+
+input {
+  width: 5.6em;
+  font-size: 30px;
+  font-family: Calibri;
+  background-color:rgba(0, 255, 55, 0.3);
+}
+
+th {
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 35px;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-size: 40px;
+  text-align: center;
+  font-family: Calibri;
+}
+
+#animatedBack {
+  background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 15s ease infinite;
+  -moz-animation: Gradient 15s ease infinite;
+  animation: Gradient 15s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+  0% {
+    background-position: 0% 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@-moz-keyframes Gradient {
+  0% {
+    background-position: 0% 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@keyframes colorchange {
+  0% {
+    opacity: 1.0;
+    background-color: rgba(0, 128, 0, 0);
+    -webkit-transform: scale(1.0);
+  }
+  50% {
+    opacity: 1;
+    background-color: rgba(0, 128, 0, 1);
+    -webkit-transform: scale(1.05);
+  }
+  100% {
+    opacity: 1.0;
+    background-color: rgba(0, 128, 0, 0);
+    -webkit-transform: scale(1.0);
+  }
+ }
+
+ @keyframes colorchangered {
+  0% {
+    opacity: 1.0;
+    background-color: rgba(255, 0, 0, 0);
+    -webkit-transform: scale(1.0);
+  }
+  50% {
+    opacity: 1;
+    background-color: rgba(255, 0, 0, 1);
+    -webkit-transform: scale(1.05);
+  }
+  100% {
+    opacity: 1.0;
+    background-color: rgba(0, 128, 0, 0);
+    -webkit-transform: scale(1.0);
+  }
+ }
+
+ @keyframes dissapear{
+  0%{
+    opacity: 1;
+    transform: rotateX(90deg);
+  }
+  50%{
+    opacity: 0.5;
+    transform: rotateX(0deg);
+  }
+  100%{
+    display: none;
+    opacity: 0;
+    transform: rotateX(90deg);
+  }
+}
+
+/* Toggle Switches */
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 24px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Basic Tooltip */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  font-size: 20px;
+
+  visibility: hidden;
+  width: fit-content;
+  background-color: #8A2BE2;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
