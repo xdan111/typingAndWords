@@ -22,7 +22,7 @@ class Player{
 	}
 }
 ///////
-const keyLocations={
+/* const keyLocations={
 	32:'right1 left1',
 	54:'right2',
 	89:'right2',
@@ -69,11 +69,55 @@ const keyLocations={
 	81:'left5',
 	65:'left5',
 	90:'left5'
+} */
+var keyLocations={
+	' ':'right1 left1',
+	'6':'right2',
+	'y':'right2',
+	'h':'right2',
+	'n':'right2',
+	'7':'right2',
+	'u':'right2',
+	'j':'right2',
+	'm':'right2',
+	'8':'right3',
+	'i':'right3',
+	'k':'right3',
+	',':'right3',
+	'9':'right4',
+	'o':'right4',
+	'l':'right4',
+	'.':'right4',
+	'0':'right5',
+	'p':'right5',
+	';':'right5',
+	'/':'right5',
+	'-':'right5',
+	'[':'right5',
+	'\'':'right5',
+	'=':'right5',
+	']':'right5',
+	'5':'left2',
+	't':'letf2',
+	'g':'left2',
+	'b':'left2',
+	'4':'left2',
+	'r':'left2',
+	'f':'left2',
+	'v':'left2',
+	'3':'left3',
+	'e':'left3',
+	'd':'left3',
+	'c':'left3',	
+	'2':'left4',
+	'w':'left4',
+	's':'left4',
+	'x':'left4',
+	'1':'left5',
+	'q':'left5',
+	'a':'left5',
+	'z':'left5'
 }
-function hint(x){
-	
-}
-
 /////
 function loadJSON(url,callback){
 	var xobj = new XMLHttpRequest();
@@ -215,16 +259,18 @@ document.addEventListener('keypress', function(x){
 
 textArea.onkeyup =function(x){
 	textArea.value=x.key;
-	var typingkeycode=x.keyCode;
+	nextfinger=letterDisplay.innerHTML;
 	for(let keys in keyLocations){
-		if(typingkeycode==keys){
-		fingerDisplay.innerHTML=keyLocations[keys];	
-		document.getElementById("showHint1").innerHTML="显示字母应该用什么手指：" + fingerDisplay.innerHTML;
-		}
-			console.log(keys);
+		if(nextfinger==keys){
+		fingerDisplay.innerHTML=keyLocations[keys];
 	}
-	console.log(typingkeycode);	
+	else if(letterDisplay.innerHTML==""){	
+	document.getElementById("showHint1").innerHTML="显示字母应该用什么手指：right1 left1";
+	}
+	}
 	document.getElementById("showHint").innerHTML="显示应该接下来应该输入的字母:"+letterDisplay.innerHTML;
+	document.getElementById("showHint1").innerHTML="显示字母应该用什么手指：" + fingerDisplay.innerHTML;
+	
 	
 }
 
