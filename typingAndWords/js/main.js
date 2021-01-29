@@ -14,11 +14,18 @@ class Player{
 		timeLimits=0;
 		score=0;
 	}
-	// timer(){
-		
+	// timer(){		
 	// }
-	scorer(){
-		
+		scorer(x){
+		var typingwords=x;
+		var score=this.score;
+		if(typingwords==wordDisplay0.innerHTML){
+			score+=10;
+			scoreDisplay.innerHTML='当前分数：'+ score;
+		}
+		else(x!=wordDisplay0.innerHTML)
+			score=10;		
+			console.log(score);						
 	}
 }
 ///////
@@ -163,7 +170,7 @@ function onTyping(x){
 		letterDisplay.classList.toggle("red",true);
 		return;
 	}
-	console.log(typingKey)
+	console.log(typingKey);
 	var yieldedObj=word.next()
 	if (yieldedObj.done){
 		test("done. Reloading...");
@@ -236,6 +243,8 @@ var wordDisplay0=document.getElementById('word0');
 var wordDisplay1=document.getElementById('word1');
 var letterDisplay=document.getElementById('letter');
 var fingerDisplay=document.getElementById('showHint1');
+var hpDisplay=document.getElementById('hp');
+var scoreDisplay=document.getElementById('score');
 
 window.onload = function() {
 //	loadJSON('words.json',testwps);
@@ -262,19 +271,17 @@ textArea.onkeyup =function(x){
 	nextfinger=letterDisplay.innerHTML;
 	for(let keys in keyLocations){
 		if(nextfinger==keys){
-		fingerDisplay.innerHTML=keyLocations[keys];
-		document.getElementById("showHint1").innerHTML="显示接下来应该用什么手指：" + fingerDisplay.innerHTML;
+		fingerDisplay.innerHTML="显示接下来应该用什么手指：" + keyLocations[keys];
 	}
 	else if(letterDisplay.innerHTML==""){	
-	document.getElementById("showHint1").innerHTML="显示接下来应该用什么手指：right1 left1";
+	fingerDisplay.innerHTML="显示接下来应该用什么手指：right1 left1";
 	}
 	}
 	document.getElementById("showHint").innerHTML="显示接下来应该输入的字母:"+letterDisplay.innerHTML;
+	var player = new Player('one',3,0,0);
+	player.scorer(textArea.value);
+	console.log(textArea.value);	
 }
-	
-	
-}
-
 
 textArea.onblur =function(){
 	if (!this.value.includes('/exit')) {
