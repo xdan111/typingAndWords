@@ -7,77 +7,29 @@ typing();
 */
 
 ///////////////////
+
+///////
 class Player{
 	constructor(name,hp,timeLimits,score) {
-	    name="player1";
-		hp=3;
-		timeLimits=0;
-		score=0;
-	}
-	// timer(){		
-	// }
-		scorer(x){
-		var typingwords=x;
-		var score=this.score;
-		if(typingwords==wordDisplay0.innerHTML){
-			score+=10;
-			scoreDisplay.innerHTML='当前分数：'+ score;
+	    this.name=name;
+		this.hp=hp;
+		this.timeLimits=timeLimits;
+		this.score=score;
+	}	
+	scorer(x,letter){
+		if(x==letter){
+		this.score+=1;
 		}
-		else(x!=wordDisplay0.innerHTML)
-			score=10;		
-			console.log(score);						
+		else if(x == "Enter" && letter==""){
+		this.score+=0;
+		}
+		else{
+		this.score-=1;
+		}
+		return this.score;
 	}
-}
-///////
-/* const keyLocations={
-	32:'right1 left1',
-	54:'right2',
-	89:'right2',
-	72:'right2',
-	78:'right2',
-	55:'right2',
-	85:'right2',
-	74:'right2',
-	77:'right2',
-	56:'right3',
-	73:'right3',
-	75:'right3',
-	188:'right3',
-	57:'right4',
-	79:'right4',
-	76:'right4',
-	190:'right4',
-	48:'right5',
-	80:'right5',
-	186:'right5',
-	191:'right5',
-	53:'left2',
-	84:'letf2',
-	71:'left2',
-	66:'left2',
-	52:'left2',
-	82:'left2',
-	70:'left2',
-	86:'left2',
-	56:'left3',
-	69:'left3',
-	68:'left3',
-	67:'left3',	
-	50:'left4',
-	87:'left4',
-	83:'left4',
-	88:'left4',
-	189:'left5',
-	219:'left5',
-	222:'left5',
-	187:'left5',
-	13:'left5',
-	49:'left5',
-	81:'left5',
-	65:'left5',
-	90:'left5'
-} */
-var keyLocations={
+	}
+var keyLocations = {
 	' ':'right1 left1',
 	'6':'right2',
 	'y':'right2',
@@ -141,7 +93,6 @@ function loadJSON(url,callback){
 function testwps(xhttp){
 	test(" words loading "+xhttp.responseText);
 }
-
 function loadWords(xhttp){
 	words=JSON.parse(xhttp.responseText);
 //	test(" words loaded "+JSON.stringify(words));
@@ -149,28 +100,29 @@ function loadWords(xhttp){
 //	test("object keys:"+Object.keys(words)+"\n object values:"+Object.values(words));
 	word=wordGenerator(words);
 //	test(words.apple);
-}
 
+}
 function test(x){
 	alert('test: '+ x);
 }
-
 function onTyping(x){
 	var typingKey=x.key;
-//	test("key:"+typingKey);
+	var score=0;
+	var player=new Player('one',3,0,0);
+	document.getElementById('score').innerHTML='当前分数'+player.scorer(typingKey,letterDisplay.innerHTML);
 	if (typingKey==letterDisplay.innerHTML){//correct typing
 		document.getElementById("test-js").innerHTML = '';
-//		test("match");
 	}else if(typingKey=="Enter" && letterDisplay.innerHTML==""){//next sentence
-//		test("go");
 		document.getElementById("test-js").innerHTML = '';
 	}
-	else{// wrong typing
+	
+	else{// wrong typing 如果输入错误就跳出函数
 		letterDisplay.classList.toggle("yellow",false);
-		letterDisplay.classList.toggle("red",true);
-		return;
+		letterDisplay.classList.toggle("red",true); 
+		return;//
+		 
 	}
-	console.log(typingKey);
+	
 	var yieldedObj=word.next()
 	if (yieldedObj.done){
 		test("done. Reloading...");
@@ -178,25 +130,30 @@ function onTyping(x){
 		return;
 		}
 	var yieldedValue=yieldedObj.value;
-
-//	test("yieldedValue:"+yieldedValue);
-
+	console.log(yieldedValue);
 	if (yieldedValue=="isSentence"){
 		yieldedValue=word.next().value;
 		sentenceDisplay0.innerHTML=yieldedValue;
 		sentenceDisplay1.innerHTML=word.next().value;
 		wordDisplay0.innerHTML=word.next().value;
+		//wordDisplay2.innerHTML=word.next().value;
+		// wordDisplay0.style.color='#EE7752';
 		wordDisplay1.innerHTML=word.next().value;
+		//wordDisplay1.style.color='#FF0000';
 		letterDisplay.innerHTML=word.next().value;
+		//letterDisplay.style.color='#008000';
+		console.log(yieldedValue);
 		letterDisplay.classList.toggle("red",false);
 		letterDisplay.classList.toggle("yellow",true);
+
 	}else{
 		wordDisplay0.innerHTML=yieldedValue;
+		//wordDisplay2.innerHTML=yieldedValue.next().value;
 		wordDisplay1.innerHTML=word.next().value;
 		letterDisplay.innerHTML=word.next().value;
 		letterDisplay.classList.toggle("red",false);
 		letterDisplay.classList.toggle("yellow",true);
-//		test("match");
+
 	}
 	
 	if (letterDisplay.innerHTML==""){
@@ -206,7 +163,6 @@ function onTyping(x){
 	}
 
 }
-
 function* wordGenerator(obj){
 //	yield "Start!";
 	for (let x in obj){
@@ -268,7 +224,7 @@ document.addEventListener('keypress', function(x){
 
 textArea.onkeyup =function(x){
 	textArea.value=x.key;
-	nextfinger=letterDisplay.innerHTML;
+	var nextfinger=letterDisplay.innerHTML;
 	for(let keys in keyLocations){
 		if(nextfinger==keys){
 		fingerDisplay.innerHTML="显示接下来应该用什么手指：" + keyLocations[keys];
@@ -278,12 +234,9 @@ textArea.onkeyup =function(x){
 	}
 	}
 	document.getElementById("showHint").innerHTML="显示接下来应该输入的字母:"+letterDisplay.innerHTML;
-	var player = new Player('one',3,0,0);
-	player.scorer(textArea.value);
-	console.log(textArea.value);	
-}
-
-textArea.onblur =function(){
+	}
+	
+	textArea.onblur =function(){
 	if (!this.value.includes('/exit')) {
 		//test("error");
 		this.classList.add("focused");

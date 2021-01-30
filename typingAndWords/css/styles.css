@@ -3,7 +3,10 @@ background: burlywood;
 }
 .red {
     color: red;
-	font-size: x-large;
+	font-size: 50px;
+}
+#sentenceArea{
+	font-size: 30px;
 }
 #word0{
 	color: green;
@@ -11,7 +14,7 @@ background: burlywood;
 .yellow{
 	color: #EE7752;
 	font-style: italic;
-	font-size: larger;
+	font-size: 40px;
 }
 #word1{
 	color:#8A2BE2;
