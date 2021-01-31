@@ -10,27 +10,25 @@ typing();
 
 ///////
 class Player{
-	constructor(name,hp,timeLimits,score) {
+	constructor(name,timeLimits) {
 	    this.name=name;
-		this.hp=hp;
 		this.timeLimits=timeLimits;
-		this.score=score;
 	}	
 	scorer(x,letter){
 		if(x==letter){
-		this.score+=1;
+		score+=5;
 		}
 		else if(x == "Enter" && letter==""){
-		this.score+=0;
+		score+=0;
 		}
 		else{
-		this.score-=1;
+		score-=5;
 		}
-		return this.score;
+		return score;
 	}
 	}
 var keyLocations = {
-	' ':'right1 left1',
+	'Space':'right1 left1',
 	'6':'right2',
 	'y':'right2',
 	'h':'right2',
@@ -108,21 +106,19 @@ function test(x){
 function onTyping(x){
 	var typingKey=x.key;
 	var score=0;
-	var player=new Player('one',3,0,0);
-	document.getElementById('score').innerHTML='当前分数'+player.scorer(typingKey,letterDisplay.innerHTML);
+	var player=new Player('one',3);
+	scoreDisplay.innerHTML='当前分数'+player.scorer(typingKey,letterDisplay.innerHTML);
 	if (typingKey==letterDisplay.innerHTML){//correct typing
 		document.getElementById("test-js").innerHTML = '';
 	}else if(typingKey=="Enter" && letterDisplay.innerHTML==""){//next sentence
 		document.getElementById("test-js").innerHTML = '';
-	}
-	
+	}	
 	else{// wrong typing 如果输入错误就跳出函数
 		letterDisplay.classList.toggle("yellow",false);
 		letterDisplay.classList.toggle("red",true); 
 		return;//
 		 
-	}
-	
+	}	
 	var yieldedObj=word.next()
 	if (yieldedObj.done){
 		test("done. Reloading...");
@@ -145,7 +141,6 @@ function onTyping(x){
 		console.log(yieldedValue);
 		letterDisplay.classList.toggle("red",false);
 		letterDisplay.classList.toggle("yellow",true);
-
 	}else{
 		wordDisplay0.innerHTML=yieldedValue;
 		//wordDisplay2.innerHTML=yieldedValue.next().value;
@@ -153,7 +148,6 @@ function onTyping(x){
 		letterDisplay.innerHTML=word.next().value;
 		letterDisplay.classList.toggle("red",false);
 		letterDisplay.classList.toggle("yellow",true);
-
 	}
 	
 	if (letterDisplay.innerHTML==""){
@@ -163,6 +157,7 @@ function onTyping(x){
 	}
 
 }
+
 function* wordGenerator(obj){
 //	yield "Start!";
 	for (let x in obj){
@@ -189,7 +184,8 @@ function* wordGenerator(obj){
 }
 
 ////////////////////
-
+var hp=0;
+var score=0;
 var words;
 var word;
 var textArea=document.getElementById('typing');
@@ -201,7 +197,7 @@ var letterDisplay=document.getElementById('letter');
 var fingerDisplay=document.getElementById('showHint1');
 var hpDisplay=document.getElementById('hp');
 var scoreDisplay=document.getElementById('score');
-
+var hpDisplay=document.getElementById('hp');
 window.onload = function() {
 //	loadJSON('words.json',testwps);
 	loadJSON('words.json',loadWords);
@@ -220,6 +216,7 @@ document.addEventListener('readystatechange', () => {
 
 document.addEventListener('keypress', function(x){
 	onTyping(x);
+	
 });//ignore ctrl shift etc.
 
 textArea.onkeyup =function(x){
@@ -230,7 +227,7 @@ textArea.onkeyup =function(x){
 		fingerDisplay.innerHTML="显示接下来应该用什么手指：" + keyLocations[keys];
 	}
 	else if(letterDisplay.innerHTML==""){	
-	fingerDisplay.innerHTML="显示接下来应该用什么手指：right1 left1";
+	fingerDisplay.innerHTML="";
 	}
 	}
 	document.getElementById("showHint").innerHTML="显示接下来应该输入的字母:"+letterDisplay.innerHTML;
