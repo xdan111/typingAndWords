@@ -10,9 +10,10 @@ typing();
 
 ///////
 class Player{
-	constructor(name,timeLimits) {
+	constructor(name,timeLimits,hp) {
 	    this.name=name;
 		this.timeLimits=timeLimits;
+		this.hp=hp;
 	}	
 	scorer(x,letter){
 		if(x==letter){
@@ -26,6 +27,24 @@ class Player{
 		}
 		return score;
 	}
+	hper(score){
+		if(score==0)
+		{
+			this.hp=0;
+		}
+		else if (score>0 && score<50){
+			this.hp=1;
+		}
+		else if(score>=50 && score<100)
+		{
+			this.hp=2;
+		}
+		else { 
+			this.hp=3;
+			}
+	    return this.hp;		
+	}
+	
 	}
 var keyLocations = {
 	'Space':'right1 left1',
@@ -105,9 +124,11 @@ function test(x){
 }
 function onTyping(x){
 	var typingKey=x.key;
-	var score=0;
-	var player=new Player('one',3);
-	scoreDisplay.innerHTML='当前分数'+player.scorer(typingKey,letterDisplay.innerHTML);
+	var player=new Player('one',3,0);
+	player.scorer(typingKey,letterDisplay.innerHTML)
+	scoreDisplay.innerHTML='当前分数'+score;
+	hpDisplay.innerHTML='血槽'+player.hper(score);
+	console.log(player.hper(score))
 	if (typingKey==letterDisplay.innerHTML){//correct typing
 		document.getElementById("test-js").innerHTML = '';
 	}else if(typingKey=="Enter" && letterDisplay.innerHTML==""){//next sentence
@@ -157,7 +178,6 @@ function onTyping(x){
 	}
 
 }
-
 function* wordGenerator(obj){
 //	yield "Start!";
 	for (let x in obj){
@@ -184,7 +204,7 @@ function* wordGenerator(obj){
 }
 
 ////////////////////
-var hp=0;
+//var hp=0;
 var score=0;
 var words;
 var word;
