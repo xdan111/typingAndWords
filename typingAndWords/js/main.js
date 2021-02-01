@@ -35,11 +35,10 @@ class Player{
 		else if (score>0 && score<50){
 			this.hp=1;
 		}
-		else if(score>=50 && score<100)
-		{
+		else if(score>=50 && score<100){
 			this.hp=2;
 		}
-		else { 
+		else if(score>=100){ 
 			this.hp=3;
 			}
 	    return this.hp;		
@@ -127,7 +126,7 @@ function onTyping(x){
 	var player=new Player('one',3,0);
 	player.scorer(typingKey,letterDisplay.innerHTML)
 	scoreDisplay.innerHTML='当前分数'+score;
-	hpDisplay.innerHTML='血槽'+player.hper(score);
+	hpdisplay(player.hper(score));
 	console.log(player.hper(score))
 	if (typingKey==letterDisplay.innerHTML){//correct typing
 		document.getElementById("test-js").innerHTML = '';
@@ -264,7 +263,21 @@ textArea.onkeyup =function(x){
 		this.classList.remove("focused");
 	}
 };
-
+	function hpdisplay(hp){
+		/* if(hp==0){
+		hpDisplay.innerHTML='';	
+		}
+		else if(hp==1){
+		hpDisplay.innerHTML='血槽 '+"<img src='img/hp.svg'>";
+		}
+		else if(hp==2){
+		hpDisplay.innerHTML='血槽 '+"<img src='img/hp.svg'>"+"<img src='img/hp.svg'>";
+		}
+		else if(hp==3){
+		hpDisplay.innerHTML='血槽 '+"<img src='img/hp.svg'>"+"<img src='img/hp.svg'>"+"<img src='img/hp.svg'>";	
+		} */
+		hpDisplay.innerHTML=(hp==0 && ' ') || (hp==1 && '血槽 '+"<img src='img/hp.svg'>") || (hp==2 && '血槽 '+"<img src='img/hp.svg'> "+"<img src='img/hp.svg'>") || (hp==3 && '血槽 '+"<img src='img/hp.svg'> "+"<img src='img/hp.svg'> "+"<img src='img/hp.svg'>");
+	}
 
 	// var nextWord=wordGenerator(words);
 	// var i=nextWord.next();
