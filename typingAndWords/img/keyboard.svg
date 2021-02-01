@@ -1,0 +1,617 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1445" height="516" viewBox="0 0 1445 516">
+    <defs>
+        <style>
+            .cls-13{fill:#fff}.cls-2{fill:#f500d6}.cls-10,.cls-12,.cls-13,.cls-2,.cls-6,.cls-7,.cls-8,.cls-9{stroke:#707070}.cls-19,.cls-3{font-size:20px}.cls-14,.cls-19,.cls-3,.cls-4{font-family:NotoSansSC-Regular,Noto Sans SC}.cls-4{font-size:25px}.cls-5{opacity:.9}.cls-6{fill:#1fa5ff}.cls-7{fill:#04bf8a}.cls-8{fill:#986bf1}.cls-16,.cls-9{fill:#ffcdca}.cls-10{fill:#ddf23d}.cls-11{fill:#f29f05}.cls-12{fill:#0ff3f7}.cls-14{font-size:30px}.cls-19{fill:#888}.cls-22,.cls-23{stroke:none}.cls-23{fill:#707070}.cls-24{fill:none}
+        </style>
+    </defs>
+    <g id="keyboard" transform="translate(-327 -663)">
+        <g id="路径_571" fill="#fff">
+            <path d="M1444.5 515.5H.5V.5h1444v515z" class="cls-22" transform="translate(327 663)"/>
+            <path d="M1 1v514h1443V1H1M0 0h1445v516H0V0z" class="cls-23" transform="translate(327 663)"/>
+        </g>
+        <g id="组_577" transform="translate(453 691)">
+            <g id="矩形_6" class="cls-2">
+                <path d="M0 0H76V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id="_" class="cls-3" transform="translate(26 31)">
+                <tspan x="-10" y="0">！</tspan>
+            </text>
+            <text id="_1" class="cls-4" transform="translate(16 39)">
+                <tspan x="-.938" y="29">1</tspan>
+            </text>
+        </g>
+        <g id="组_579" class="cls-5" transform="translate(88)">
+            <g id="矩形_6-2" class="cls-6">
+                <path d="M0 0H76V76H0z" class="cls-22" transform="translate(461 691)"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24" transform="translate(461 691)"/>
+            </g>
+            <text id="_2" class="cls-3" transform="translate(486 722)">
+                <tspan x="-9.46" y="0">@</tspan>
+            </text>
+            <text id="_2-2" class="cls-4" transform="translate(477 730)">
+                <tspan x="-.938" y="29">2</tspan>
+            </text>
+        </g>
+        <g id="组_577-2" transform="translate(645 691)">
+            <g id="矩形_6-3" class="cls-7">
+                <path d="M0 0H76V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id="_3" class="cls-3" transform="translate(22 31)">
+                <tspan x="-5.55" y="0">#</tspan>
+            </text>
+            <text id="_3-2" class="cls-4" transform="translate(15 39)">
+                <tspan x=".063" y="29">3</tspan>
+            </text>
+        </g>
+        <g id="组_579-2" class="cls-5" transform="translate(280)">
+            <g id="矩形_6-4" class="cls-8">
+                <path d="M0 0H76V76H0z" class="cls-22" transform="translate(461 691)"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24" transform="translate(461 691)"/>
+            </g>
+            <text id="_4" class="cls-3" transform="translate(483 722)">
+                <tspan x="-5.55" y="0">$</tspan>
+            </text>
+            <text id="_4-2" class="cls-4" transform="translate(476 730)">
+                <tspan x=".063" y="29">4</tspan>
+            </text>
+        </g>
+        <g id="组_577-3" transform="translate(837 691)">
+            <g id="矩形_6-5" class="cls-8">
+                <path d="M0 0H76V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id="_5" class="cls-3" transform="translate(25 31)">
+                <tspan x="-9.21" y="0">%</tspan>
+            </text>
+            <text id="_5-2" class="cls-4" transform="translate(16 39)">
+                <tspan x="-.938" y="29">5</tspan>
+            </text>
+        </g>
+        <g id="组_579-3" class="cls-5" transform="translate(471.717)">
+            <g id="矩形_6-6" class="cls-9">
+                <path d="M0 0H76V76H0z" class="cls-22" transform="translate(461 691)"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24" transform="translate(461 691)"/>
+            </g>
+            <text id="_6" class="cls-3" transform="translate(483 722)">
+                <tspan x="-5.55" y="0">^</tspan>
+            </text>
+            <text id="_6-2" class="cls-4" transform="translate(476 730)">
+                <tspan x=".063" y="29">6</tspan>
+            </text>
+        </g>
+        <g id="组_577-4" transform="translate(1029 691)">
+            <g id="矩形_6-7" class="cls-9">
+                <path d="M0 0H76V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id="_7" class="cls-3" transform="translate(23 31)">
+                <tspan x="-6.8" y="0">&amp;</tspan>
+            </text>
+            <text id="_7-2" class="cls-4" transform="translate(16 39)">
+                <tspan x="-.938" y="29">7</tspan>
+            </text>
+        </g>
+        <g id="组_579-4" class="cls-5" transform="translate(664)">
+            <g id="矩形_6-8" class="cls-10">
+                <path d="M0 0H76V76H0z" class="cls-22" transform="translate(461 691)"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24" transform="translate(461 691)"/>
+            </g>
+            <text id="_8" class="cls-3" transform="translate(482 722)">
+                <tspan x="-4.67" y="0">*</tspan>
+            </text>
+            <text id="_8-2" class="cls-4" transform="translate(477 730)">
+                <tspan x="-.938" y="29">8</tspan>
+            </text>
+        </g>
+        <g id="组_577-5" transform="translate(1221 691)">
+            <g id="路径_584" class="cls-11">
+                <path d="M75.5 75.5H.5V.5h75v75z" class="cls-22"/>
+                <path d="M1 1v74h74V1H1M0 0h76v76H0V0z" class="cls-23"/>
+            </g>
+            <text id="_9" class="cls-3" transform="translate(19 31)">
+                <tspan x="-3.38" y="0">(</tspan>
+            </text>
+            <text id="_9-2" class="cls-4" transform="translate(16 39)">
+                <tspan x="-.938" y="29">9</tspan>
+            </text>
+        </g>
+        <g id="组_608" transform="translate(1317 691)">
+            <g id="矩形_6-9" class="cls-12">
+                <path d="M0 0H76V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id="_10" class="cls-3" transform="translate(19 31)">
+                <tspan x="-3.38" y="0">)</tspan>
+            </text>
+            <text id="_0" class="cls-4" transform="translate(15 39)">
+                <tspan x=".063" y="29">0</tspan>
+            </text>
+        </g>
+        <g id="组_577-6" transform="translate(1413 691)">
+            <g id="矩形_6-10" class="cls-12">
+                <path d="M0 0H76V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id="_11" class="cls-3" transform="translate(25 31)">
+                <tspan x="-8.94" y="0">—</tspan>
+            </text>
+            <text id="_12" class="cls-3" transform="translate(22 62)">
+                <tspan x="-5.59" y="0">_</tspan>
+            </text>
+        </g>
+        <g id="组_579-5" class="cls-5" transform="translate(1048)">
+            <g id="矩形_6-11" class="cls-12">
+                <path d="M0 0H76V76H0z" class="cls-22" transform="translate(461 691)"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24" transform="translate(461 691)"/>
+            </g>
+            <text id="_13" class="cls-3" transform="translate(483 722)">
+                <tspan x="-5.55" y="0">+</tspan>
+            </text>
+            <text id="_14" class="cls-3" transform="translate(483 753)">
+                <tspan x="-5.55" y="0">=</tspan>
+            </text>
+        </g>
+        <g id="组_577-7" transform="translate(1626 691)">
+            <g id="矩形_6-12" class="cls-13">
+                <path d="M0 0H128V76H0z" class="cls-22" transform="translate(-12)"/>
+                <path d="M0.5 0.5H127.5V75.5H0.5z" class="cls-24" transform="translate(-12)"/>
+            </g>
+            <text id="Backspace" class="cls-3" transform="translate(52 31)">
+                <tspan x="-49.57" y="0">Backspace</tspan>
+            </text>
+        </g>
+        <g id="组_609" transform="translate(1626 883)">
+            <g id="矩形_6-13" class="cls-13">
+                <path d="M0 0H139V74H0z" class="cls-22" transform="translate(-23)"/>
+                <path d="M0.5 0.5H138.5V73.5H0.5z" class="cls-24" transform="translate(-23)"/>
+            </g>
+            <text id="Enter" class="cls-14" transform="translate(31 39)">
+                <tspan x="-37.545" y="0">Enter</tspan>
+            </text>
+        </g>
+        <g id="组_623" transform="translate(1563 979)">
+            <g id="矩形_6-14" class="cls-13">
+                <path d="M0 0H202V74H0z" class="cls-22" transform="translate(-23)"/>
+                <path d="M0.5 0.5H201.5V73.5H0.5z" class="cls-24" transform="translate(-23)"/>
+            </g>
+            <text id="Shift" class="cls-14" transform="translate(31 39)">
+                <tspan x="-32.715" y="0">Shift</tspan>
+            </text>
+        </g>
+        <g id="组_588" transform="translate(369 787)">
+            <g id="矩形_6-15" class="cls-13">
+                <path d="M0 0H128V76H0z" class="cls-22" transform="translate(-12)"/>
+                <path d="M0.5 0.5H127.5V75.5H0.5z" class="cls-24" transform="translate(-12)"/>
+            </g>
+            <text id="Tab" class="cls-14" transform="translate(29 39)">
+                <tspan x="-25.5" y="0">Tab</tspan>
+            </text>
+        </g>
+        <g id="组_610" transform="translate(371 883)">
+            <g id="矩形_6-16" class="cls-13">
+                <path d="M0 0H172V76H0z" class="cls-22" transform="translate(-14)"/>
+                <path d="M0.5 0.5H171.5V75.5H0.5z" class="cls-24" transform="translate(-14)"/>
+            </g>
+            <text id="Gaps" class="cls-14" transform="translate(37 39)">
+                <tspan x="-35.115" y="0">Gaps</tspan>
+            </text>
+            <text id="Lock" class="cls-14" transform="translate(37 66)">
+                <tspan x="-32.94" y="0">Lock</tspan>
+            </text>
+        </g>
+        <g id="组_625" transform="translate(370.667 1075)">
+            <g id="矩形_6-17" class="cls-13">
+                <path d="M0 0H129V76H0z" class="cls-22" transform="translate(-13.667)"/>
+                <path d="M0.5 0.5H128.5V75.5H0.5z" class="cls-24" transform="translate(-13.667)"/>
+            </g>
+            <text id="Ctrl" class="cls-14" transform="translate(43.333 39)">
+                <tspan x="-24.87" y="0">Ctrl</tspan>
+            </text>
+        </g>
+        <g id="组_630" transform="translate(1622.667 1073)">
+            <g id="矩形_6-18" class="cls-13">
+                <path d="M0 0H175V76H0z" class="cls-22" transform="translate(-55.667)"/>
+                <path d="M0.5 0.5H174.5V75.5H0.5z" class="cls-24" transform="translate(-55.667)"/>
+            </g>
+            <text id="Ctrl-2" class="cls-14" transform="translate(-14.667 39)">
+                <tspan x="-24.87" y="0">Ctrl</tspan>
+            </text>
+        </g>
+        <g id="组_624" transform="translate(371 979)">
+            <g id="矩形_6-19" class="cls-13">
+                <path d="M0 0H203V76H0z" class="cls-22" transform="translate(-14)"/>
+                <path d="M0.5 0.5H202.5V75.5H0.5z" class="cls-24" transform="translate(-14)"/>
+            </g>
+            <text id="Shift-2" class="cls-14" transform="translate(37 39)">
+                <tspan x="-32.715" y="0">Shift</tspan>
+            </text>
+        </g>
+        <g id="组_578" transform="translate(357 691)">
+            <g id="矩形_6-20" class="cls-13">
+                <path d="M0 0H76V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id="_15" class="cls-3" transform="translate(22 31)">
+                <tspan x="-5.55" y="0">~</tspan>
+            </text>
+            <text id="_16" class="cls-3" transform="translate(26 62)">
+                <tspan x="-10" y="0">、</tspan>
+            </text>
+        </g>
+        <g id="组_576" transform="translate(610 787)">
+            <g id="矩形_6-21" class="cls-6">
+                <path d="M0 0H76V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id="W" class="cls-14" transform="translate(16 4)">
+                <tspan x="-1.17" y="35">W</tspan>
+            </text>
+        </g>
+        <g id="组_597" transform="translate(549 883)">
+            <g id="矩形_6-22" class="cls-2">
+                <path d="M0 0H76V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id="A" class="cls-14" transform="translate(16 4)">
+                <tspan x="2.895" y="35">A</tspan>
+            </text>
+        </g>
+        <g id="组_611" transform="translate(580 979)">
+            <g id="矩形_6-23" class="cls-2">
+                <path d="M0 0H76V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id="Z" class="cls-14" transform="translate(16 4)">
+                <tspan x="2.955" y="35">Z</tspan>
+            </text>
+        </g>
+        <g id="组_626" transform="translate(506 1075)">
+            <g id="矩形_6-24" class="cls-13">
+                <path d="M0 0H113V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H112.5V75.5H0.5z" class="cls-24"/>
+            </g>
+        </g>
+        <g id="组_628" transform="translate(1434 1073)">
+            <g id="矩形_6-25" class="cls-13">
+                <path d="M0 0H113V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H112.5V75.5H0.5z" class="cls-24"/>
+            </g>
+        </g>
+        <g id="组_627" transform="translate(639 1075)">
+            <g id="矩形_6-26" class="cls-13">
+                <path d="M0 0H113V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H112.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id="Alt" class="cls-14" transform="translate(16 4)">
+                <tspan x="2.965" y="35">Alt</tspan>
+            </text>
+        </g>
+        <g id="组_629" transform="translate(1301 1073)">
+            <g id="矩形_6-27" class="cls-13">
+                <path d="M0 0H113V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H112.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id="Alt-2" class="cls-14" transform="translate(16 4)">
+                <tspan x="2.965" y="35">Alt</tspan>
+            </text>
+        </g>
+        <g id="组_591" class="cls-5" transform="translate(245 96)">
+            <g id="矩形_6-28" class="cls-7">
+                <path d="M0 0H76V76H0z" class="cls-22" transform="translate(461 691)"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24" transform="translate(461 691)"/>
+            </g>
+            <text id="E" class="cls-14" transform="translate(477 695)">
+                <tspan x="3.18" y="35">E</tspan>
+            </text>
+        </g>
+        <g id="组_598" class="cls-5" transform="translate(184 192)">
+            <g id="矩形_6-29" class="cls-6">
+                <path d="M0 0H76V76H0z" class="cls-22" transform="translate(461 691)"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24" transform="translate(461 691)"/>
+            </g>
+            <text id="S" class="cls-14" transform="translate(477 695)">
+                <tspan x="3.045" y="35">S</tspan>
+            </text>
+        </g>
+        <g id="组_612" class="cls-5" transform="translate(215 288)">
+            <g id="路径_577" fill="#1fa5ff">
+                <path d="M75.5 75.5H.5V.5h75v75z" class="cls-22" transform="translate(461 691)"/>
+                <path d="M1 1v74h74V1H1M0 0h76v76H0V0z" class="cls-23" transform="translate(461 691)"/>
+            </g>
+            <text id="X" class="cls-14" transform="translate(477 695)">
+                <tspan x="3.405" y="35">X</tspan>
+            </text>
+        </g>
+        <g id="组_589" transform="translate(514 787)">
+            <g id="矩形_6-30" class="cls-2">
+                <path d="M0 0H76V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id="E-2" class="cls-14" transform="translate(16 4)">
+                <tspan x="3.18" y="35">E</tspan>
+            </text>
+        </g>
+        <g id="组_576-2" transform="translate(898 787)">
+            <g id="矩形_6-31" class="cls-8">
+                <path d="M0 0H76V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id="T" class="cls-14" transform="translate(16 4)">
+                <tspan x="3.015" y="35">T</tspan>
+            </text>
+        </g>
+        <g id="组_600" transform="translate(837 883)">
+            <g id="矩形_6-32" class="cls-8">
+                <path d="M0 0H76V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id="F" class="cls-14" transform="translate(16 4)">
+                <tspan x="3.72" y="35">F</tspan>
+            </text>
+        </g>
+        <g id="组_614" transform="translate(868 979)">
+            <g id="矩形_6-33" class="cls-8">
+                <path d="M0 0H76V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id="V" class="cls-14" transform="translate(16 4)">
+                <tspan x="3.375" y="35">V</tspan>
+            </text>
+        </g>
+        <g id="组_591-2" class="cls-5" transform="translate(533 96)">
+            <g id="路径_581" class="cls-16">
+                <path d="M75.5 75.5H.5V.5h75v75z" class="cls-22" transform="translate(461 691)"/>
+                <path d="M1 1v74h74V1H1M0 0h76v76H0V0z" class="cls-23" transform="translate(461 691)"/>
+            </g>
+            <text id="Y" class="cls-14" transform="translate(477 695)">
+                <tspan x="4.035" y="35">Y</tspan>
+            </text>
+        </g>
+        <g id="组_601" class="cls-5" transform="translate(472 192)">
+            <g id="矩形_6-34" class="cls-8">
+                <path d="M0 0H76V76H0z" class="cls-22" transform="translate(461 691)"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24" transform="translate(461 691)"/>
+            </g>
+            <text id="G" class="cls-14" transform="translate(477 695)">
+                <tspan x="1.665" y="35">G</tspan>
+            </text>
+        </g>
+        <g id="组_615" class="cls-5" transform="translate(503 288)">
+            <g id="矩形_6-35" class="cls-8">
+                <path d="M0 0H76V76H0z" class="cls-22" transform="translate(461 691)"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24" transform="translate(461 691)"/>
+            </g>
+            <text id="B" class="cls-14" transform="translate(477 695)">
+                <tspan x="2.145" y="35">B</tspan>
+            </text>
+        </g>
+        <g id="组_589-2" transform="translate(802 787)">
+            <g id="矩形_6-36" class="cls-8">
+                <path d="M0 0H76V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id="R" class="cls-14" transform="translate(16 4)">
+                <tspan x="2.475" y="35">R</tspan>
+            </text>
+        </g>
+        <g id="组_599" transform="translate(741 883)">
+            <g id="矩形_6-37" class="cls-7">
+                <path d="M0 0H76V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id="D" class="cls-14" transform="translate(16 4)">
+                <tspan x="1.695" y="35">D</tspan>
+            </text>
+        </g>
+        <g id="组_613" transform="translate(772 979)">
+            <g id="路径_586" fill="#04bf8a">
+                <path d="M75.5 75.5H.5V.5h75v75z" class="cls-22"/>
+                <path d="M1 1v74h74V1H1M0 0h76v76H0V0z" class="cls-23"/>
+            </g>
+            <text id="C" class="cls-14" transform="translate(16 4)">
+                <tspan x="2.43" y="35">C</tspan>
+            </text>
+        </g>
+        <g id="组_576-3" transform="translate(1186 787)">
+            <g id="矩形_6-38" class="cls-10">
+                <path d="M0 0H76V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id="I" class="cls-14" transform="translate(16 4)">
+                <tspan x="7.605" y="35">I</tspan>
+            </text>
+        </g>
+        <g id="组_603" transform="translate(1125 883)">
+            <g id="路径_580" class="cls-16">
+                <path d="M75.5 75.5H.5V.5h75v75z" class="cls-22"/>
+                <path d="M1 1v74h74V1H1M0 0h76v76H0V0z" class="cls-23"/>
+            </g>
+            <text id="J" class="cls-14" transform="translate(16 4)">
+                <tspan x="3.96" y="35">J</tspan>
+            </text>
+        </g>
+        <g id="组_617" transform="translate(1156 979)">
+            <g id="矩形_6-39" class="cls-9">
+                <path d="M0 0H76V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id="M" class="cls-14" transform="translate(16 4)">
+                <tspan x="-.18" y="35">M</tspan>
+            </text>
+        </g>
+        <g id="组_591-3" class="cls-5" transform="translate(821 96)">
+            <g id="矩形_6-40" fill="#f29f05" stroke="#707070">
+                <path d="M0 0H76V76H0z" class="cls-22" transform="translate(461 691)"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24" transform="translate(461 691)"/>
+            </g>
+            <text id="O" class="cls-14" transform="translate(477 695)">
+                <tspan x=".87" y="35">O</tspan>
+            </text>
+        </g>
+        <g id="组_604" class="cls-5" transform="translate(760 192)">
+            <g id="矩形_6-41" class="cls-10">
+                <path d="M0 0H76V76H0z" class="cls-22" transform="translate(461 691)"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24" transform="translate(461 691)"/>
+            </g>
+            <text id="K" class="cls-14" transform="translate(477 695)">
+                <tspan x="2.31" y="35">K</tspan>
+            </text>
+        </g>
+        <g id="组_589-3" transform="translate(1090 787)">
+            <g id="矩形_6-42" class="cls-9">
+                <path d="M0 0H76V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id="U" class="cls-14" transform="translate(16 4)">
+                <tspan x="1.185" y="35">U</tspan>
+            </text>
+        </g>
+        <g id="组_602" transform="translate(1029 883)">
+            <g id="路径_585" class="cls-16">
+                <path d="M75.5 75.5H.5V.5h75v75z" class="cls-22"/>
+                <path d="M1 1v74h74V1H1M0 0h76v76H0V0z" class="cls-23"/>
+            </g>
+            <text id="H" class="cls-14" transform="translate(16 4)">
+                <tspan x="1.08" y="35">H</tspan>
+            </text>
+        </g>
+        <g id="组_616" transform="translate(1060 979)">
+            <g id="矩形_6-43" class="cls-9">
+                <path d="M0 0H76V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id="N" class="cls-14" transform="translate(16 4)">
+                <tspan x="1.17" y="35">N</tspan>
+            </text>
+        </g>
+        <g id="组_576-4" transform="translate(1474 787)">
+            <g id="矩形_6-44" class="cls-12">
+                <path d="M0 0H76V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id="_17" class="cls-19" transform="translate(16 8)">
+                <tspan x="8.62" y="23">{</tspan>
+            </text>
+            <text id="_18" class="cls-19" transform="translate(16 39)">
+                <tspan x="8.62" y="23">[</tspan>
+            </text>
+        </g>
+        <g id="组_606" transform="translate(1413 883)">
+            <g id="矩形_6-45" class="cls-12">
+                <path d="M0 0H76V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id=":" class="cls-3" transform="translate(16 8)">
+                <tspan x="9.22" y="23">:</tspan>
+            </text>
+            <text id="_19" class="cls-3" transform="translate(16 39)">
+                <tspan x="9.22" y="23">;</tspan>
+            </text>
+        </g>
+        <g id="组_620" transform="translate(1444 979)">
+            <g id="矩形_6-46" class="cls-12">
+                <path d="M0 0H76V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id="_20" class="cls-3" transform="translate(16 8)">
+                <tspan x="7.26" y="23">?</tspan>
+            </text>
+            <text id="_21" class="cls-3" transform="translate(16 39)">
+                <tspan x="8.08" y="23">/</tspan>
+            </text>
+        </g>
+        <g id="组_621" transform="translate(1252 979)">
+            <g id="矩形_6-47" class="cls-10">
+                <path d="M0 0H76V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id="_22" class="cls-3" transform="translate(16 8)">
+                <tspan x="6.45" y="23">&lt;</tspan>
+            </text>
+            <text id="_23" class="cls-3" transform="translate(16 39)">
+                <tspan x="9.22" y="23">,</tspan>
+            </text>
+        </g>
+        <g id="组_622" transform="translate(1348 979)">
+            <g id="路径_578" class="cls-11">
+                <path d="M75.5 75.5H.5V.5h75v75z" class="cls-22"/>
+                <path d="M1 1v74h74V1H1M0 0h76v76H0V0z" class="cls-23"/>
+            </g>
+            <text id="_24" class="cls-3" transform="translate(16 8)">
+                <tspan x="6.45" y="23">&gt;</tspan>
+            </text>
+            <text id="_." class="cls-3" transform="translate(16 39)">
+                <tspan x="9.22" y="23">.</tspan>
+            </text>
+        </g>
+        <g id="路径_583" fill="#0ff3f7">
+            <path d="M75.5 75.5H.5V.5h75v75z" class="cls-22" transform="translate(1509 883)"/>
+            <path d="M1 1v74h74V1H1M0 0h76v76H0V0z" class="cls-23" transform="translate(1509 883)"/>
+        </g>
+        <g id="组_589-4" transform="translate(1378 787)">
+            <g id="矩形_6-48" class="cls-12">
+                <path d="M0 0H76V76H0z" class="cls-22"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24"/>
+            </g>
+            <text id="P" class="cls-14" transform="translate(16 4)">
+                <tspan x="2.52" y="35">P</tspan>
+            </text>
+        </g>
+        <g id="组_605" transform="translate(1317 883)">
+            <g id="路径_582" class="cls-11">
+                <path d="M75.5 75.5H.5V.5h75v75z" class="cls-22"/>
+                <path d="M1 1v74h74V1H1M0 0h76v76H0V0z" class="cls-23"/>
+            </g>
+            <text id="L" class="cls-14" transform="translate(16 4)">
+                <tspan x="3.87" y="35">L</tspan>
+            </text>
+        </g>
+        <g id="组_652">
+            <g id="矩形_6-49" class="cls-12">
+                <path d="M0 0H76V76H0z" class="cls-22" transform="translate(1570 787)"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24" transform="translate(1570 787)"/>
+            </g>
+            <text id="_25" class="cls-3" transform="translate(1586 795)">
+                <tspan x="8.62" y="23">}</tspan>
+            </text>
+            <text id="_26" class="cls-3" transform="translate(1586 826)">
+                <tspan x="8.62" y="23">]</tspan>
+            </text>
+        </g>
+        <text id="_27" class="cls-3" transform="translate(1525 927)">
+            <tspan x="9.22" y="23">&apos;</tspan>
+        </text>
+        <text id="_28" class="cls-3" transform="translate(1525 894)">
+            <tspan x="7.25" y="23">&quot;</tspan>
+        </text>
+        <text id="_29" class="cls-3" transform="translate(1490 795)">
+            <tspan x="8.62" y="23">{</tspan>
+        </text>
+        <text id="_30" class="cls-3" transform="translate(1490 826)">
+            <tspan x="8.62" y="23">[</tspan>
+        </text>
+        <g id="组_653">
+            <g id="矩形_6-50" class="cls-13">
+                <path d="M0 0H76V76H0z" class="cls-22" transform="translate(1666 787)"/>
+                <path d="M0.5 0.5H75.5V75.5H0.5z" class="cls-24" transform="translate(1666 787)"/>
+            </g>
+            <text id="_31" class="cls-3" transform="translate(1682 795)">
+                <tspan x="9.31" y="23">|</tspan>
+            </text>
+            <text id="_32" class="cls-3" transform="translate(1682 826)">
+                <tspan x="8.08" y="23">\</tspan>
+            </text>
+        </g>
+        <g id="组_654">
+            <g id="路径_579" fill="#b8e1ff">
+                <path d="M508.5 75.5H.5V.5h508v75z" class="cls-22" transform="translate(772 1075)"/>
+                <path d="M1 1v74h507V1H1M0 0h509v76H0V0z" class="cls-23" transform="translate(772 1075)"/>
+            </g>
+            <text id="Space" class="cls-14" transform="translate(951 1089)">
+                <tspan x="33.44" y="35">Space</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="104.21" height="115.205" viewBox="0 0 104.21 115.205">
+    <defs>
+        <style>
+            .cls-2{fill:none;stroke:#000;stroke-linejoin:round;stroke-linecap:round}
+        </style>
+    </defs>
+    <g id="left2" transform="translate(-1374.018 -337.649)">
+        <g id="组_3" transform="rotate(171 721.573 277.383)">
+            <g id="组_2">
+                <path id="路径_1" fill="none" stroke="#000" stroke-linejoin="round" d="M75.022 27.132a23.879 23.879 0 0 0 2.807 11.227l9.448 17.749A6.618 6.618 0 0 1 76 63.041l-12.011-18.91 7.136 38.923a6.618 6.618 0 1 1-12.939 2.785L50.75 52.957v41.924a6.62 6.62 0 1 1-13.239 0V52.926l-7.432 34.515a6.619 6.619 0 0 1-12.944-2.78L24.271 35.3 11.09 46.805a6.62 6.62 0 1 1-8.941-9.766l23.2-30.892A19.856 19.856 0 0 1 39.717 0h15.446c15.7 0 19.859 12.242 19.859 27.132z"/>
+            </g>
+        </g>
+        <g id="组_160" transform="rotate(-169 743.396 109.632)">
+            <g id="组_56" transform="translate(20.574)">
+                <path id="路径_54" d="M3 0H0" class="cls-2"/>
+            </g>
+            <g id="组_57" transform="translate(19.574 7.937)">
+                <path id="路径_55" d="M2 2L0 0" class="cls-2"/>
+            </g>
+            <g id="组_58" transform="translate(12.573 12.229)">
+                <path id="路径_56" d="M0 3V0" class="cls-2"/>
+            </g>
+            <g id="组_59" transform="translate(2 7.937)">
+                <path id="路径_57" d="M0 2l2-2" class="cls-2"/>
+            </g>
+            <g id="组_60">
+                <path id="路径_58" d="M0 0h3" class="cls-2"/>
+            </g>
+        </g>
+        <circle id="椭圆_2" cx="6.5" cy="6.5" r="6.5" fill="#986bf1" transform="scale(-1) rotate(37 -172.95 -2337.535)"/>
+    </g>
+</svg>
