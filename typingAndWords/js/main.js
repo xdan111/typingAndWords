@@ -28,10 +28,6 @@ class Player{
 		return score;
 	}
 	hper(score){
-		if(score<0)
-		{
-			
-		}
 		if(score==0)
 		{
 			this.hp=0;
@@ -50,7 +46,7 @@ class Player{
 	
 	}
 var keyLocations = {
-	' ':'right1',
+	' ':'thumb',
 	'6':'right2',
 	'y':'right2',
 	'h':'right2',
@@ -98,7 +94,7 @@ var keyLocations = {
 	'z':'left5'
 }
 var fingerLocations={
-	'right1':'img/right1.svg',
+	'thumb':'img/thumb.svg',
 	'right2':'img/right2.svg',
 	'right3':'img/right3.svg',
 	'right4':'img/right4.svg',
@@ -106,8 +102,7 @@ var fingerLocations={
 	'left2':'img/left2.svg',
 	'left3':'img/left3.svg',
 	'left4':'img/left4.svg',
-	'left5':'img/left5.svg'
-	
+	'left5':'img/left5.svg'	
 }
 /////
 function loadJSON(url,callback){
@@ -143,7 +138,7 @@ function onTyping(x){
 	player.scorer(typingKey,letterDisplay.innerHTML)
 	scoreDisplay.innerHTML='Score:'+score;
 	hpdisplay(player.hper(score));
-	console.log(player.hper(score))
+	gameover(score);
 	if (typingKey==letterDisplay.innerHTML){//correct typing
 		document.getElementById("test-js").innerHTML = '';
 	}else if(typingKey=="Enter" && letterDisplay.innerHTML==""){//next sentence
@@ -155,7 +150,7 @@ function onTyping(x){
 		return;//
 		 
 	}	
-	var yieldedObj=word.next()
+	var yieldedObj=word.next();
 	if (yieldedObj.done){
 		test("done. Reloading...");
 		location.reload();
@@ -168,18 +163,13 @@ function onTyping(x){
 		sentenceDisplay0.innerHTML=yieldedValue;
 		sentenceDisplay1.innerHTML=word.next().value;
 		wordDisplay0.innerHTML=word.next().value;
-		//wordDisplay2.innerHTML=word.next().value;
-		// wordDisplay0.style.color='#EE7752';
 		wordDisplay1.innerHTML=word.next().value;
-		//wordDisplay1.style.color='#FF0000';
 		letterDisplay.innerHTML=word.next().value;
-		//letterDisplay.style.color='#008000';
 		console.log(yieldedValue);
 		letterDisplay.classList.toggle("red",false);
 		letterDisplay.classList.toggle("yellow",true);
 	}else{
 		wordDisplay0.innerHTML=yieldedValue;
-		//wordDisplay2.innerHTML=yieldedValue.next().value;
 		wordDisplay1.innerHTML=word.next().value;
 		letterDisplay.innerHTML=word.next().value;
 		letterDisplay.classList.toggle("red",false);
@@ -187,11 +177,14 @@ function onTyping(x){
 	}
 	
 	if (letterDisplay.innerHTML==""){
-		document.getElementById("test-js").innerHTML = 'Press "Enter" to Continue';
+		document.getElementById("test-js").innerHTML = 'Press "Enter" to Continue';		
+		document.getElementById("show").style.display = "none";
 	}else if (letterDisplay.innerHTML==" "){
-		document.getElementById("test-js").innerHTML = 'Press "Space" bar';
+		document.getElementById("test-js").innerHTML = 'Press "Space" bar';		
 	}
-
+	else{
+		document.getElementById("show").style.display = "block";
+	}
 }
 function* wordGenerator(obj){
 //	yield "Start!";
@@ -257,15 +250,7 @@ document.addEventListener('keypress', function(x){
 textArea.onkeyup =function(x){
 	textArea.value=x.key;
 	fingerdisplay();
-	/* var nextfinger=letterDisplay.innerHTML;
-	for(let keys in keyLocations){
-		if(nextfinger==keys){
-		fingerDisplay.innerHTML="显示接下来应该用什么手指：" + keyLocations[keys];
-	}
-	else if(letterDisplay.innerHTML==""){	
-	fingerDisplay.innerHTML="";
-	}
-	} */
+	
 	document.getElementById("showHint").innerHTML=letterDisplay.innerHTML;
 	}
 	
@@ -296,8 +281,7 @@ textArea.onkeyup =function(x){
 		hpDisplay.innerHTML=(hp==0 && ' ') || (hp==1 && "<img src='img/hp.svg'>") || (hp==2 && "<img src='img/hp.svg'> "+"<img src='img/hp.svg'>") || (hp==3 && "<img src='img/hp.svg'> "+"<img src='img/hp.svg'> "+"<img src='img/hp.svg'>");
 	}
 	function fingerdisplay(){
-		var nextfinger=letterDisplay.innerHTML;
-		
+		var nextfinger=letterDisplay.innerHTML;		
 		for(let keys in keyLocations){
 			if(nextfinger==keys){
 				for (let keys1 in fingerLocations){
@@ -312,6 +296,13 @@ textArea.onkeyup =function(x){
 		}
 		}
 	}
+	function gameover(score){
+		if(score<0)
+		{
+		window.location.href="gameover.html"
+		}
+		}
+		
 	// var nextWord=wordGenerator(words);
 	// var i=nextWord.next();
 	// document.getElementById('sentence').innerHTML=i.value[0];

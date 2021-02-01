@@ -5,6 +5,7 @@
 		<title>Typing Game</title>
 		<link rel="icon" type="image/png" href="img/favicon.png">
 		<link rel="stylesheet" href="css/styles.css">
+		<script type='text/javascript' src='js/end.js'></script>
 		<script defer src='js/main.js'></script>
 	</head>
 	<body>
@@ -13,7 +14,7 @@
 			<p id='score'></p>
 			<p id='hp'></p>			
 			</div>
-			<div id='show'>	
+			<div id='show' style="display:none;">	
 			<p id="showHint"></p>
 			<p id='imgdisplay'><img id='img' scr='?'></p>
 			</div>
@@ -26,13 +27,13 @@
 		</div>
 		<div id='test-div'>
 			<input type="text" id="typing">
-			<p id="test-js">javascript</p>
-		
+			<p id="test-js">javascript</p>		
 		</div>		
-		
+			<div id='keyboard'><img src='img/keyboard.svg' width="963px" height="344px"></div>
 		</div>
-		<div id='keyboard'><img src='img/keyboard.svg' width="963px" height="344px"></div>
+
 		<div id='loader'>
 		</div>
+		
 	</body>
 </html>
