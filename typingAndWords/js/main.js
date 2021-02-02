@@ -10,23 +10,24 @@ typing();
 
 ///////
 class Player{
-	constructor(name,timeLimits,hp) {
+	constructor(name,timeLimits,hp,scoreChange) {
 	    this.name=name;
 		this.timeLimits=timeLimits;
 		this.hp=hp;
+		this.scoreChange=scoreChange;
 	}	
 	scorer(x,letter){
 		if(x==letter){
-		score+=5;
+		this.scoreChange+=5;
 		}
 		else if(x == "Enter" && letter==""){
-		score+=0;
+		this.scoreChange+=0;
 		}
 		else{
-		score-=5;
+		this.scoreChange-=5;
 		}
-		return score;
-	}
+		return this.scoreChange;
+	} 
 	hper(score){
 		if(score==0)
 		{
@@ -42,6 +43,9 @@ class Player{
 			this.hp=3;
 			}
 	    return this.hp;		
+	}
+	timer(){
+		 
 	}
 	
 	}
@@ -132,10 +136,17 @@ function loadWords(xhttp){
 function test(x){
 	alert('test: '+ x);
 }
+
 function onTyping(x){
 	var typingKey=x.key;
-	var player=new Player('one',3,0);
-	player.scorer(typingKey,letterDisplay.innerHTML)
+	let player=new Player('one',5,3,0);
+	/* player.scorer(typingKey,letterDisplay.innerHTML)
+	scoreDisplay.innerHTML='Score:'+score;
+	hpdisplay(player.hper(score));
+	gameover(score); */
+	document.getElementById('scorechange').innerHTML="Score plus "+player.scorer(typingKey,letterDisplay.innerHTML);
+	fadeIn(scorechange,10)
+	totalscore(typingKey,letterDisplay.innerHTML);
 	scoreDisplay.innerHTML='Score:'+score;
 	hpdisplay(player.hper(score));
 	gameover(score);
@@ -143,6 +154,7 @@ function onTyping(x){
 		document.getElementById("test-js").innerHTML = '';
 	}else if(typingKey=="Enter" && letterDisplay.innerHTML==""){//next sentence
 		document.getElementById("test-js").innerHTML = '';
+		document.getElementById('scorechange').innerHTML='';
 	}	
 	else{// wrong typing 如果输入错误就跳出函数
 		letterDisplay.classList.toggle("yellow",false);
@@ -249,12 +261,12 @@ document.addEventListener('keypress', function(x){
 
 textArea.onkeyup =function(x){
 	textArea.value=x.key;
-	fingerdisplay();
-	
+	fingerdisplay();	
+	fadeOut(scorechange);
 	document.getElementById("showHint").innerHTML=letterDisplay.innerHTML;
 	}
 	
-	textArea.onblur =function(){
+textArea.onblur =function(){
 	if (!this.value.includes('/exit')) {
 		//test("error");
 		this.classList.add("focused");
@@ -265,7 +277,7 @@ textArea.onkeyup =function(x){
 		this.classList.remove("focused");
 	}
 };
-	function hpdisplay(hp){
+function hpdisplay(hp){
 		/* if(hp==0){
 		hpDisplay.innerHTML='';	
 		}
@@ -280,8 +292,8 @@ textArea.onkeyup =function(x){
 		} */
 		hpDisplay.innerHTML=(hp==0 && ' ') || (hp==1 && "<img src='img/hp.svg'>") || (hp==2 && "<img src='img/hp.svg'> "+"<img src='img/hp.svg'>") || (hp==3 && "<img src='img/hp.svg'> "+"<img src='img/hp.svg'> "+"<img src='img/hp.svg'>");
 	}
-	function fingerdisplay(){
-		var nextfinger=letterDisplay.innerHTML;		
+function fingerdisplay(){
+	var nextfinger=letterDisplay.innerHTML;		
 		for(let keys in keyLocations){
 			if(nextfinger==keys){
 				for (let keys1 in fingerLocations){
@@ -296,13 +308,49 @@ textArea.onkeyup =function(x){
 		}
 		}
 	}
-	function gameover(score){
+function gameover(score){
 		if(score<0)
 		{
 		window.location.href="gameover.html"
 		}
 		}
-		
+function totalscore(x,letter){
+		if(x==letter){
+		score+=5;
+		}
+		else if(x == "Enter" && letter==""){
+		score+=0;
+		}
+		else{
+		score-=5;
+		}
+		return score;
+}	
+////////////// 以下为淡入淡出函数
+function fadeIn(element,speed){
+    if(element.style.opacity !=1){
+        var speed = speed || 30 ;
+        var num = 0;
+        var st = setInterval(function(){
+        num++;
+        element.style.opacity = num/2;
+        if(num>=5)  {  clearInterval(st);  }
+        },speed);
+    }
+}
+
+function fadeOut(element){
+    if(element.style.opacity !=0){
+        var speed = speed || 30 ;
+        var num = 5;
+        var st = setInterval(function(){
+        num--;
+        element.style.opacity = num / 2;
+        if(num<=0)  {   clearInterval(st);  }
+        },speed);
+    }
+
+}
 	// var nextWord=wordGenerator(words);
 	// var i=nextWord.next();
 	// document.getElementById('sentence').innerHTML=i.value[0];
