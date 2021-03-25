@@ -1,8 +1,6 @@
 //主流程
 /*
-读取键盘输入的函数：
-typing();
-判断对错的函数：
+
 
 */
 
@@ -10,45 +8,51 @@ typing();
 
 ///////
 class Player{
-	constructor(name,timeLimits,hp,scoreChange) {
+	constructor(name,timeLimits,hp,score,combo,highestCombo) {
 	    this.name=name;
 		this.timeLimits=timeLimits;
 		this.hp=hp;
-		this.scoreChange=scoreChange;
+		this.score=score;
+		this.combo=0;//疑问：必须要把constructor的参数在这里再写一遍吗？
+		this.highestCombo=0;
 	}	
-	scorer(x,letter){
-		if(x==letter){
-		this.scoreChange+=5;
-		}
-		else if(x == "Enter" && letter==""){
-		this.scoreChange+=0;
-		}
-		else{
-		this.scoreChange-=5;
-		}
-		return this.scoreChange;
-	} 
-	hper(score){
-		if(score==0)
-		{
-			this.hp=0;
-		}
-		else if (score>0 && score<50){
-			this.hp=1;
-		}
-		else if(score>=50 && score<100){
-			this.hp=2;
-		}
-		else if(score>=100){ 
-			this.hp=3;
+//	var combo=0;
+	scorer(x){
+		var s="s1";
+		var addScore=0;
+		if (x != 0){
+//			test("s="+s);
+			addScore=x+this.combo;
+			this.score+=addScore;//先上分
+//			test("score="+this.score);
+			if (this.combo > 1){
+//				test("combo");
+				s =this.combo+" combos! +" +addScore;//输出得分的文字
+				if (this.combo>this.highestCombo){
+					this.highestCombo=this.combo;
+//					test("highest combo="+this.highestCombo);
+				}
+			}else{
+//				test("no combo");
+				s ="+" +addScore;//输出得分的文字
 			}
+			this.combo++;
+			return s;
+		}else{
+//			test("2 s="+s);
+			this.combo=0;
+			s="try again!";
+			return s;
+		}
+	} 
+	hper(x){
+		this.hp += x;
 	    return this.hp;		
 	}
 	timer(){
 		 
 	}
-	
-	}
+}
 var keyLocations = {
 	' ':'thumb',
 	'6':'right2',
@@ -96,6 +100,10 @@ var keyLocations = {
 	'q':'left5',
 	'a':'left5',
 	'z':'left5'
+	///add shift key to indicator
+/*
+	'A':'s_left5',
+*/
 }
 var fingerLocations={
 	'thumb':'img/thumb.svg',
@@ -107,6 +115,17 @@ var fingerLocations={
 	'left3':'img/left3.svg',
 	'left4':'img/left4.svg',
 	'left5':'img/left5.svg'	
+	///add shift key
+/*
+	's_right2':'img/s_right2.svg',//draw shift key on the leftside of right fingers
+	's_right3':'img/s_right3.svg',
+	's_right4':'img/s_right4.svg',
+	's_right5':'img/s_right5.svg',
+	's_left2':'img/s_left2.svg',//draw shift key on the rightside of left fingers
+	's_left3':'img/s_left3.svg',
+	's_left4':'img/s_left4.svg',
+	's_left5':'img/s_left5.svg'	
+*/
 }
 /////
 function loadJSON(url,callback){
@@ -139,29 +158,26 @@ function test(x){
 
 function onTyping(x){
 	var typingKey=x.key;
-	let player=new Player('one',5,3,0);
-	/* player.scorer(typingKey,letterDisplay.innerHTML)
-	scoreDisplay.innerHTML='Score:'+score;
-	hpdisplay(player.hper(score));
-	gameover(score); */
-	document.getElementById('scorechange').innerHTML="Score plus "+player.scorer(typingKey,letterDisplay.innerHTML);
-	fadeIn(scorechange,10)
-	totalscore(typingKey,letterDisplay.innerHTML);
-	scoreDisplay.innerHTML='Score:'+score;
-	hpdisplay(player.hper(score));
-	gameover(score);
+
 	if (typingKey==letterDisplay.innerHTML){//correct typing
 		document.getElementById("test-js").innerHTML = '';
+		fadeInOut(scoreChangeDisplay,100,player.scorer(1));
 	}else if(typingKey=="Enter" && letterDisplay.innerHTML==""){//next sentence
 		document.getElementById("test-js").innerHTML = '';
-		document.getElementById('scorechange').innerHTML='';
-	}	
-	else{// wrong typing 如果输入错误就跳出函数
+	}else if(letterDisplay.innerHTML != "") {// wrong typing 如果输入错误就跳出函数
+		player.hper(-1);
+		gameover(player.hp);	
+		hpDisplay.innerHTML=heartsDisplayer(player.hp);
 		letterDisplay.classList.toggle("yellow",false);
 		letterDisplay.classList.toggle("red",true); 
-		return;//
-		 
-	}	
+		fadeInOut(scoreChangeDisplay,100,player.scorer(0));	
+		return;
+	}else {
+		test('Press "Enter" to continue.');
+		return;
+	}
+	
+	
 	var yieldedObj=word.next();
 	if (yieldedObj.done){
 		test("done. Reloading...");
@@ -197,6 +213,8 @@ function onTyping(x){
 	else{
 		document.getElementById("show").style.display = "block";
 	}
+	hpDisplay.innerHTML=heartsDisplayer(player.hp);
+	scoreDisplay.innerHTML="Score: " +player.score+" Highest Combo: "+player.highestCombo;
 }
 function* wordGenerator(obj){
 //	yield "Start!";
@@ -223,9 +241,82 @@ function* wordGenerator(obj){
 	return;
 }
 
+
+function heartsDisplayer(hp){
+	var hearts=" ";
+	for (var i=0; i<hp ; i++){
+		hearts+="<img src='img/hp.svg'>";
+//		test(hearts);
+	}
+	return hearts;
+}
+
+function fingerdisplay(){
+	var nextfinger=letterDisplay.innerHTML;		
+	for(let keys in keyLocations){
+		if(nextfinger==keys){
+			for (let keys1 in fingerLocations){
+				if(keyLocations[keys]==keys1){
+					var imgurl=fingerLocations[keys1];
+					document.getElementById('img').src=imgurl;
+				}
+			}
+		}
+		else if(letterDisplay.innerHTML==""){	
+		document.getElementById('img').src='';
+		}
+	}
+}
+
+function gameover(hp){
+	if(hp==0)
+	{
+	window.location.href="gameover.html"
+	}
+}
+/*		
+function totalscore(x,letter){
+		if(x==letter){
+		score+=5;
+		}
+		else if(x == "Enter" && letter==""){
+		score+=0;
+		}
+		else{
+		score-=5;
+		}
+		return score;
+}
+*/
+////////////// 以下为淡入淡出函数
+function fadeInOut(element,s,text){
+	element.style.opacity=0;
+	element.innerHTML=text;
+	var speed = s || 30 ;
+	var num = 0;
+	var st = setInterval(function(){
+	num++;
+	element.style.opacity = num/2;
+	if(num>=5)  {  clearInterval(st);  }
+	},speed);
+//	test("in");
+	fadeOut(element,speed);
+}
+
+function fadeOut(element,s){
+	element.style.opacity=1;
+	var speed = s || 30 ;
+	var num = 5;
+	var st = setInterval(function(){
+	num--;
+	element.style.opacity = num / 2;
+	if(num<=0)  {   clearInterval(st);  }
+	},speed);
+//	test("out");
+}
+
+
 ////////////////////
-//var hp=0;
-var score=0;
 var words;
 var word;
 var textArea=document.getElementById('typing');
@@ -237,10 +328,15 @@ var letterDisplay=document.getElementById('letter');
 var fingerDisplay=document.getElementById('showHint1');
 var hpDisplay=document.getElementById('hp');
 var scoreDisplay=document.getElementById('score');
-var hpDisplay=document.getElementById('hp');
+var scoreChangeDisplay=document.getElementById('scorechange');
+let player=new Player('one',5,3,0);
+
 window.onload = function() {
 //	loadJSON('words.json',testwps);
 	loadJSON('words.json',loadWords);
+//	test("loading" + player.hp);
+	hpDisplay.innerHTML=heartsDisplayer(player.hp);
+	scoreDisplay.innerHTML="score:" + player.score;
 //	document.getElementById("test-js").innerHTML = words.apple;
 };
 
@@ -262,9 +358,8 @@ document.addEventListener('keypress', function(x){
 textArea.onkeyup =function(x){
 	textArea.value=x.key;
 	fingerdisplay();	
-	fadeOut(scorechange);
 	document.getElementById("showHint").innerHTML=letterDisplay.innerHTML;
-	}
+};
 	
 textArea.onblur =function(){
 	if (!this.value.includes('/exit')) {
@@ -277,150 +372,4 @@ textArea.onblur =function(){
 		this.classList.remove("focused");
 	}
 };
-function hpdisplay(hp){
-		/* if(hp==0){
-		hpDisplay.innerHTML='';	
-		}
-		else if(hp==1){
-		hpDisplay.innerHTML='血槽 '+"<img src='img/hp.svg'>";
-		}
-		else if(hp==2){
-		hpDisplay.innerHTML='血槽 '+"<img src='img/hp.svg'>"+"<img src='img/hp.svg'>";
-		}
-		else if(hp==3){
-		hpDisplay.innerHTML='血槽 '+"<img src='img/hp.svg'>"+"<img src='img/hp.svg'>"+"<img src='img/hp.svg'>";	
-		} */
-		hpDisplay.innerHTML=(hp==0 && ' ') || (hp==1 && "<img src='img/hp.svg'>") || (hp==2 && "<img src='img/hp.svg'> "+"<img src='img/hp.svg'>") || (hp==3 && "<img src='img/hp.svg'> "+"<img src='img/hp.svg'> "+"<img src='img/hp.svg'>");
-	}
-function fingerdisplay(){
-	var nextfinger=letterDisplay.innerHTML;		
-		for(let keys in keyLocations){
-			if(nextfinger==keys){
-				for (let keys1 in fingerLocations){
-					if(keyLocations[keys]==keys1){
-					var imgurl=fingerLocations[keys1];
-					document.getElementById('img').src=imgurl;
-		}
-		}
-		}
-		else if(letterDisplay.innerHTML==""){	
-		document.getElementById('img').src='';
-		}
-		}
-	}
-function gameover(score){
-		if(score<0)
-		{
-		window.location.href="gameover.html"
-		}
-		}
-function totalscore(x,letter){
-		if(x==letter){
-		score+=5;
-		}
-		else if(x == "Enter" && letter==""){
-		score+=0;
-		}
-		else{
-		score-=5;
-		}
-		return score;
-}	
-////////////// 以下为淡入淡出函数
-function fadeIn(element,speed){
-    if(element.style.opacity !=1){
-        var speed = speed || 30 ;
-        var num = 0;
-        var st = setInterval(function(){
-        num++;
-        element.style.opacity = num/2;
-        if(num>=5)  {  clearInterval(st);  }
-        },speed);
-    }
-}
 
-function fadeOut(element){
-    if(element.style.opacity !=0){
-        var speed = speed || 30 ;
-        var num = 5;
-        var st = setInterval(function(){
-        num--;
-        element.style.opacity = num / 2;
-        if(num<=0)  {   clearInterval(st);  }
-        },speed);
-    }
-
-}
-	// var nextWord=wordGenerator(words);
-	// var i=nextWord.next();
-	// document.getElementById('sentence').innerHTML=i.value[0];
-
-// function displayJSON(some){
-// 	test(some);
-// }
-
-// function loadJSON() {
-//     var xobj = new XMLHttpRequest();
-// 	xobj.overrideMimeType("application/json");
-//     xobj.open('GET', 'words.json', true);
-// 	xobj.send(); 
-// 	xobj.onreadystatechange = function () {
-//           if (this.readyState == 4 && this.status == "200") {
-//             test(this.responseText);
-//           }
-// 		  else{
-// 			test('error');
-// 		  }
-//     }
-//  }
- 
-
-
-// function createTextarea(text) {
-//   const textArea = document.createElement('textarea');
-
-//   // Place in top-left corner of screen regardless of scroll position.
-//   textArea.style.position = 'fixed';
-//   textArea.style.top = 0;
-//   textArea.style.left = 0;
-//   textArea.style.width = '20em';
-//   textArea.style.height = '20em';
-
-//  // textArea.style.padding = 0;
-
-//   // Clean up any borders.
-//  // textArea.style.border = 'none';
-//   //textArea.style.outline = 'none';
-//   //textArea.style.boxShadow = 'none';
-
-//   // Avoid flash of white box if rendered for any reason.
-//   //textArea.style.background = 'transparent';
-
-//   textArea.value = text;
-
-//   document.body.appendChild(textArea);
-//   return textArea;
-// }
-//var x = document.getElementById('typing');
-
-
-// // 获取<p>javascript</p>节点:
-// var js = document.getElementById('test-js');
-
-// // 修改文本为JavaScript:
-// // TODO:
-// js.innerHTML="JavaScript";
-// // 修改CSS为: color: #ff0000, font-weight: bold
-// // TODO:
-// js.style.color='#ff0000';
-// js.style.fontWeight='bold';
-
-
-// document.getElementById("typing").onfocusout=function() {
-// 	alert("out");
-// 	document.getElementById("typing").focus();
-// }
-
-// x.addEventListener('mouseover',function(){
-// 	test(4);
-// });
