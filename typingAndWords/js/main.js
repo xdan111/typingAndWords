@@ -22,7 +22,7 @@ class Player{
 		var addScore=0;
 		if (x != 0){
 //			test("s="+s);
-			addScore=x+this.combo;
+			addScore=x+(this.combo>7 ? 7:this.combo);//combo数很大就不再叠加了
 			this.score+=addScore;//先上分
 //			test("score="+this.score);
 			if (this.combo > 1){
@@ -156,66 +156,6 @@ function test(x){
 	alert('test: '+ x);
 }
 
-function onTyping(x){
-	var typingKey=x.key;
-
-	if (typingKey==letterDisplay.innerHTML){//correct typing
-		document.getElementById("test-js").innerHTML = '';
-		fadeInOut(scoreChangeDisplay,100,player.scorer(1));
-	}else if(typingKey=="Enter" && letterDisplay.innerHTML==""){//next sentence
-		document.getElementById("test-js").innerHTML = '';
-	}else if(letterDisplay.innerHTML != "") {// wrong typing 如果输入错误就跳出函数
-		player.hper(-1);
-		gameover(player.hp);	
-		hpDisplay.innerHTML=heartsDisplayer(player.hp);
-		letterDisplay.classList.toggle("yellow",false);
-		letterDisplay.classList.toggle("red",true); 
-		fadeInOut(scoreChangeDisplay,100,player.scorer(0));	
-		return;
-	}else {
-		test('Press "Enter" to continue.');
-		return;
-	}
-	
-	
-	var yieldedObj=word.next();
-	if (yieldedObj.done){
-		test("done. Reloading...");
-		location.reload();
-		return;
-		}
-	var yieldedValue=yieldedObj.value;
-	console.log(yieldedValue);
-	if (yieldedValue=="isSentence"){
-		yieldedValue=word.next().value;
-		sentenceDisplay0.innerHTML=yieldedValue;
-		sentenceDisplay1.innerHTML=word.next().value;
-		wordDisplay0.innerHTML=word.next().value;
-		wordDisplay1.innerHTML=word.next().value;
-		letterDisplay.innerHTML=word.next().value;
-		console.log(yieldedValue);
-		letterDisplay.classList.toggle("red",false);
-		letterDisplay.classList.toggle("yellow",true);
-	}else{
-		wordDisplay0.innerHTML=yieldedValue;
-		wordDisplay1.innerHTML=word.next().value;
-		letterDisplay.innerHTML=word.next().value;
-		letterDisplay.classList.toggle("red",false);
-		letterDisplay.classList.toggle("yellow",true);
-	}
-	
-	if (letterDisplay.innerHTML==""){
-		document.getElementById("test-js").innerHTML = 'Press "Enter" to Continue';		
-		document.getElementById("show").style.display = "none";
-	}else if (letterDisplay.innerHTML==" "){
-		document.getElementById("test-js").innerHTML = 'Press "Space" bar';		
-	}
-	else{
-		document.getElementById("show").style.display = "block";
-	}
-	hpDisplay.innerHTML=heartsDisplayer(player.hp);
-	scoreDisplay.innerHTML="Score: " +player.score+" Highest Combo: "+player.highestCombo;
-}
 function* wordGenerator(obj){
 //	yield "Start!";
 	for (let x in obj){
@@ -271,23 +211,10 @@ function fingerdisplay(){
 function gameover(hp){
 	if(hp==0)
 	{
-	window.location.href="gameover.html"
+	window.location.href="gameover.html?score="+player.score+"&highestCombo="+player.highestCombo;
 	}
 }
-/*		
-function totalscore(x,letter){
-		if(x==letter){
-		score+=5;
-		}
-		else if(x == "Enter" && letter==""){
-		score+=0;
-		}
-		else{
-		score-=5;
-		}
-		return score;
-}
-*/
+
 ////////////// 以下为淡入淡出函数
 function fadeInOut(element,s,text){
 	element.style.opacity=0;
@@ -315,8 +242,68 @@ function fadeOut(element,s){
 //	test("out");
 }
 
+function onTyping(x){
+	var typingKey=x.key;
 
-////////////////////
+	if (typingKey==letterDisplay.innerHTML){//correct typing
+		document.getElementById("test-js").innerHTML = '';
+		fadeInOut(scoreChangeDisplay,100,player.scorer(1));
+	}else if(typingKey=="Enter" && letterDisplay.innerHTML==""){//next sentence
+		document.getElementById("test-js").innerHTML = '';
+	}else if(letterDisplay.innerHTML != "") {// wrong typing 如果输入错误就跳出函数
+		player.hper(-1);
+		gameover(player.hp);	
+		hpDisplay.innerHTML=heartsDisplayer(player.hp);
+		letterDisplay.classList.toggle("yellow",false);
+		letterDisplay.classList.toggle("red",true); 
+		fadeInOut(scoreChangeDisplay,100,player.scorer(0));	
+		return;
+	}else {
+		test('Press "Enter" to continue.');
+		return;
+	}
+	
+	var yieldedObj=word.next();
+	if (yieldedObj.done){
+		test("done. Reloading...");
+		location.reload();
+		return;
+		}
+	var yieldedValue=yieldedObj.value;
+	console.log(yieldedValue);
+	if (yieldedValue=="isSentence"){
+		yieldedValue=word.next().value;
+		sentenceDisplay0.innerHTML=yieldedValue;
+		sentenceDisplay1.innerHTML=word.next().value;
+		wordDisplay0.innerHTML=word.next().value;
+		wordDisplay1.innerHTML=word.next().value;
+		letterDisplay.innerHTML=word.next().value;
+		console.log(yieldedValue);
+		letterDisplay.classList.toggle("red",false);
+		letterDisplay.classList.toggle("yellow",true);
+	}else{
+		wordDisplay0.innerHTML=yieldedValue;
+		wordDisplay1.innerHTML=word.next().value;
+		letterDisplay.innerHTML=word.next().value;
+		letterDisplay.classList.toggle("red",false);
+		letterDisplay.classList.toggle("yellow",true);
+	}
+	
+	if (letterDisplay.innerHTML==""){
+		document.getElementById("test-js").innerHTML = 'Press "Enter" to Continue';		
+		document.getElementById("show").style.display = "none";
+	}else if (letterDisplay.innerHTML==" "){
+		document.getElementById("test-js").innerHTML = 'Press "Space" bar';		
+	}
+	else{
+		document.getElementById("show").style.display = "block";
+	}
+	hpDisplay.innerHTML=heartsDisplayer(player.hp);
+	scoreDisplay.innerHTML="Score: " +player.score+" Highest Combo: "+player.highestCombo;
+}
+
+////////////////////下面是各种声明各种触发
+
 var words;
 var word;
 var textArea=document.getElementById('typing');
@@ -350,10 +337,16 @@ document.addEventListener('readystatechange', () => {
 	},189);
 });
 
+document.addEventListener('compositionstart',function(){//check input method
+	alert("Please change input method to English.")
+	textArea.value="";
+});
+
 document.addEventListener('keypress', function(x){
 	onTyping(x);
 	
 });//ignore ctrl shift etc.
+
 
 textArea.onkeyup =function(x){
 	textArea.value=x.key;

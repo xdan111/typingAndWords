@@ -52,7 +52,7 @@ background: burlywood;
 #word1{
 	color:#8A2BE2;
 	font-style: oblique;
-	font-size: large;
+	font-size: 40px;
 }
 #show{
 	text-align: center;
@@ -106,6 +106,9 @@ background: burlywood;
 	font-size: 100px;
 }
 #Press{
+	font-size: 30px;
+}
+#scoreBoard{
 	font-size: 30px;
 }
 .button{

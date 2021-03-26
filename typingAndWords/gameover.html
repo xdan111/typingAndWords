@@ -10,9 +10,18 @@
 	<body>
 		<div id='header'>
 			<p id='over'>Game Over</p>
+			<p id='scoreBoard'></p>
 			<input type="button" id="gameStart" onclick="gameStart()" value="Restart" class='button'>			
 			<p id='Press'>or Press Any Key on Keyboard</p>
 		</div>
-		
+
+		<script>
+//			var params = new URLSearchParams(document.location.search);
+//			alert(params.get(score));
+			var params=document.location.search.split("&");
+			var score= params[0].split("=");
+			var highestCombo=params[1].split("=");
+			document.getElementById('scoreBoard').innerHTML="Your Score: "+score[1]+"\nHighest Combo: "+highestCombo[1];
+		</script>
 	</body>
 </html>
