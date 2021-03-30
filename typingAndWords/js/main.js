@@ -214,15 +214,17 @@ function fingerDisplayer(){
 	// 	document.getElementById('img').src='img/default.svg';//加一个默认图
 	// 	}
 	// }
+	var imgURL;
 	hintDisplay.innerHTML="";
 	if (nextKey!="" && keyLocations[nextKey]!=null){
-		imgurl="img/"+keyLocations[nextKey]+".svg";
-		document.getElementById('img').src=imgurl;
+		imgURL="img/"+keyLocations[nextKey]+".svg";
 	}else if (/[A-Z]/.test(nextKey)){
 		hintDisplay.innerHTML="Shift+";
-		imgurl="img/"+keyLocations[nextKey.toLowerCase()]+".svg";
-		document.getElementById('img').src=imgurl;
+		imgURL="img/"+keyLocations[nextKey.toLowerCase()]+".svg";
+	}else{
+		document.getElementById('img').src='img/default.svg';//加一个默认图，比如点赞或者go！之类的
 	}
+	document.getElementById('img').src=imgURL;
 }
 
 
