@@ -7,28 +7,30 @@
 ///////////////////
 
 ///////
+
 class Player{
-	constructor(name,timeLimits,hp,score,combo,highestCombo) {
+	constructor(name,timeLeft,hp,score,gameState,combo,highestCombo) {
 	    this.name=name;
-		this.timeLimits=timeLimits;
+		this.timeLeft=timeLeft;
 		this.hp=hp;
 		this.score=score;
+		this.gameState=gameState;
 		this.combo=0;//疑问：必须要把constructor的参数在这里再写一遍吗？
 		this.highestCombo=0;
 	}	
 //	var combo=0;
-	scorer(x){
-		var s="s1";
-		var addScore=0;
-		if (x != 0){
+	scorer(x){//x==1, correct typing; x==0, wrong typing
+		var s="s1";//return value, to display on screen
+		var addScore=0;//how much should be added in one time
+		if (x != 0){//correct typing
 //			test("s="+s);
 			addScore=x+(this.combo>7 ? 7:this.combo);//combo数很大就不再叠加了
-			this.score+=addScore;//先上分
+			this.score+=addScore;//先上分，下面是分数显示
 //			test("score="+this.score);
-			if (this.combo > 1){
+			if (this.combo > 1){//combo 1 will not be shown
 //				test("combo");
 				s =this.combo+" combos! +" +addScore;//输出得分的文字
-				if (this.combo>this.highestCombo){
+				if (this.combo>this.highestCombo){//update highest combo
 					this.highestCombo=this.combo;
 //					test("highest combo="+this.highestCombo);
 				}
@@ -38,7 +40,7 @@ class Player{
 			}
 			this.combo++;
 			return s;
-		}else{
+		}else{//wrong typing
 //			test("2 s="+s);
 			this.combo=0;
 			s="try again!";
@@ -47,12 +49,36 @@ class Player{
 	} 
 	hper(x){
 		this.hp += x;
+//		test(this.hp);
 	    return this.hp;		
 	}
-	timer(){
-		 
+	gameStart(){
+		this.gameState=1;
+	}
+	gameContinue(){
+		this.gameState=1;
+	}
+	gameOver(){
+		this.gameState=0;
+		window.location.href="gameover.html?score="+this.score+"&highestCombo="+this.highestCombo +"&timeLeft="+this.timeLeft;
+	}
+	gamePause(){
+		this.gameState=2;
 	}
 }
+
+// var keyToIndicator ={
+// 	' ':'thumb',
+// 	'6yhn7ujm':'right2',
+// 	'8ik,':'right3',
+// 	'9ol.':'right4',
+// 	"0p;/-[']=":'right5',
+// 	'5tgb4rfv':'left2',
+// 	'3edc':'left3',
+// 	'2wsx':'left4',
+// 	'1qaz':'left5'
+// }
+
 var keyLocations = {
 	' ':'thumb',
 	'6':'right2',
@@ -101,32 +127,9 @@ var keyLocations = {
 	'a':'left5',
 	'z':'left5'
 	///add shift key to indicator
-/*
-	'A':'s_left5',
-*/
+
 }
-var fingerLocations={
-	'thumb':'img/thumb.svg',
-	'right2':'img/right2.svg',
-	'right3':'img/right3.svg',
-	'right4':'img/right4.svg',
-	'right5':'img/right5.svg',
-	'left2':'img/left2.svg',
-	'left3':'img/left3.svg',
-	'left4':'img/left4.svg',
-	'left5':'img/left5.svg'	
-	///add shift key
-/*
-	's_right2':'img/s_right2.svg',//draw shift key on the leftside of right fingers
-	's_right3':'img/s_right3.svg',
-	's_right4':'img/s_right4.svg',
-	's_right5':'img/s_right5.svg',
-	's_left2':'img/s_left2.svg',//draw shift key on the rightside of left fingers
-	's_left3':'img/s_left3.svg',
-	's_left4':'img/s_left4.svg',
-	's_left5':'img/s_left5.svg'	
-*/
-}
+
 /////
 function loadJSON(url,callback){
 	var xobj = new XMLHttpRequest();
@@ -153,7 +156,12 @@ function loadWords(xhttp){
 
 }
 function test(x){
+	if (player.gameSate==1){
+	clearInterval(timeCtl);//pause timer
+	player.gamePause();
+	}
 	alert('test: '+ x);
+//	timeCtl = setInterval(countDownTimer, 100);
 }
 
 function* wordGenerator(obj){
@@ -191,29 +199,32 @@ function heartsDisplayer(hp){
 	return hearts;
 }
 
-function fingerdisplay(){
-	var nextfinger=letterDisplay.innerHTML;		
-	for(let keys in keyLocations){
-		if(nextfinger==keys){
-			for (let keys1 in fingerLocations){
-				if(keyLocations[keys]==keys1){
-					var imgurl=fingerLocations[keys1];
-					document.getElementById('img').src=imgurl;
-				}
-			}
-		}
-		else if(letterDisplay.innerHTML==""){	
-		document.getElementById('img').src='';
-		}
+function fingerDisplayer(){
+	var nextKey=letterDisplay.innerHTML;		
+	// for(let keys in keyLocations){
+	// 	if(nextfinger==keys){
+	// 		for (let keys1 in fingerLocations){
+	// 			if(keyLocations[keys]==keys1){
+	// 				var imgurl=fingerLocations[keys1];
+	// 				document.getElementById('img').src=imgurl;
+	// 			}
+	// 		}
+	// 	}
+	// 	else if(letterDisplay.innerHTML==""){	
+	// 	document.getElementById('img').src='img/default.svg';//加一个默认图
+	// 	}
+	// }
+	hintDisplay.innerHTML="";
+	if (nextKey!="" && keyLocations[nextKey]!=null){
+		imgurl="img/"+keyLocations[nextKey]+".svg";
+		document.getElementById('img').src=imgurl;
+	}else if (/[A-Z]/.test(nextKey)){
+		hintDisplay.innerHTML="Shift+";
+		imgurl="img/"+keyLocations[nextKey.toLowerCase()]+".svg";
+		document.getElementById('img').src=imgurl;
 	}
 }
 
-function gameover(hp){
-	if(hp==0)
-	{
-	window.location.href="gameover.html?score="+player.score+"&highestCombo="+player.highestCombo;
-	}
-}
 
 ////////////// 以下为淡入淡出函数
 function fadeInOut(element,s,text){
@@ -250,9 +261,10 @@ function onTyping(x){
 		fadeInOut(scoreChangeDisplay,100,player.scorer(1));
 	}else if(typingKey=="Enter" && letterDisplay.innerHTML==""){//next sentence
 		document.getElementById("test-js").innerHTML = '';
-	}else if(letterDisplay.innerHTML != "") {// wrong typing 如果输入错误就跳出函数
+	}else if(letterDisplay.innerHTML != "") {// wrong typing 如果输入错误就跳出onTyping函数
 		player.hper(-1);
-		gameover(player.hp);	
+		if(player.hp<=0){player.gameOver()};
+//		gameover(player.hp);
 		hpDisplay.innerHTML=heartsDisplayer(player.hp);
 		letterDisplay.classList.toggle("yellow",false);
 		letterDisplay.classList.toggle("red",true); 
@@ -291,12 +303,13 @@ function onTyping(x){
 	
 	if (letterDisplay.innerHTML==""){
 		document.getElementById("test-js").innerHTML = 'Press "Enter" to Continue';		
-		document.getElementById("show").style.display = "none";
+//		document.getElementById("show").style.display = "none";
 	}else if (letterDisplay.innerHTML==" "){
 		document.getElementById("test-js").innerHTML = 'Press "Space" bar';		
 	}
 	else{
-		document.getElementById("show").style.display = "block";
+		document.getElementById("test-js").innerHTML = 'test-js';	
+//		document.getElementById("show").style.display = "block";
 	}
 	hpDisplay.innerHTML=heartsDisplayer(player.hp);
 	scoreDisplay.innerHTML="Score: " +player.score+" Highest Combo: "+player.highestCombo;
@@ -306,17 +319,21 @@ function onTyping(x){
 
 var words;
 var word;
+//var testtestTime=12000;
 var textArea=document.getElementById('typing');
 var sentenceDisplay0=document.getElementById('sentence0');
 var sentenceDisplay1=document.getElementById('sentence1');
 var wordDisplay0=document.getElementById('word0');
 var wordDisplay1=document.getElementById('word1');
 var letterDisplay=document.getElementById('letter');
-var fingerDisplay=document.getElementById('showHint1');
+var hintDisplay=document.getElementById('showHint');
 var hpDisplay=document.getElementById('hp');
 var scoreDisplay=document.getElementById('score');
 var scoreChangeDisplay=document.getElementById('scorechange');
-let player=new Player('one',5,3,0);
+var timeDisplay=document.getElementById('time');
+var timeCtl;// = setInterval(countDownTimer, 100);
+let player=new Player('one',1200,3,0,0);//name,timeLeft,hp,score,gameState,combo,highestCombo
+
 
 window.onload = function() {
 //	loadJSON('words.json',testwps);
@@ -324,6 +341,8 @@ window.onload = function() {
 //	test("loading" + player.hp);
 	hpDisplay.innerHTML=heartsDisplayer(player.hp);
 	scoreDisplay.innerHTML="score:" + player.score;
+	document.getElementById("show").style.display = "block";
+//	hintDisplay.innerHTML="Let's go!";
 //	document.getElementById("test-js").innerHTML = words.apple;
 };
 
@@ -338,20 +357,32 @@ document.addEventListener('readystatechange', () => {
 });
 
 document.addEventListener('compositionstart',function(){//check input method
-	alert("Please change input method to English.")
+	test("Please change input method to English.");
 	textArea.value="";
 });
 
 document.addEventListener('keypress', function(x){
+//	test(gameCtl.gameState+":"+gameCtl.timeLeft);
+	if (player.gameState !=1){
+	 	player.gameStart();
+		timeCtl = setInterval(countDownTimer, 100);
+	}
+//	var nInterval=setInterval(gameCtl.timer,100);//试过很多次都没法调用class的方法做timer，求解
 	onTyping(x);
-	
 });//ignore ctrl shift etc.
 
 
+function countDownTimer() {
+ // var d = new Date();
+	player.timeLeft--;
+	if (player.timeLeft<=0){player.gameOver()};
+	timeDisplay.innerHTML = (player.timeLeft/10).toFixed(1) + " S";
+}
+
 textArea.onkeyup =function(x){
 	textArea.value=x.key;
-	fingerdisplay();	
-	document.getElementById("showHint").innerHTML=letterDisplay.innerHTML;
+	fingerDisplayer();	
+//	document.getElementById("showHint").innerHTML=letterDisplay.innerHTML;
 };
 	
 textArea.onblur =function(){

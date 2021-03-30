@@ -30,6 +30,13 @@ background: burlywood;
 	margin-left: 30px;
 	display: inline-block;
 }
+#time{
+	color:skyblue;
+	font-size: 30px;
+	margin-top: 10px;
+	margin-left: 30px;
+	display: inline-block;
+}
 #scorechange{
 	display: inline;
 	color:skyblue;
@@ -84,7 +91,6 @@ background: burlywood;
 #imgdisplay{
 	display: block;
 	margin: 0;
-	
 }
 #loader {
   position: absolute;
