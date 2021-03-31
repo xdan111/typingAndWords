@@ -204,21 +204,18 @@ function fingerDisplayer(){
 	var nextKey=letterDisplay.innerHTML;		
 	var imgURL;
 	hintDisplay.innerHTML="";
-	if (nextKey!="" && keyLocations[nextKey]!=null){//logic error
+	if (nextKey!="" && keyLocations[nextKey]!=null){//这里只考虑查找手指
 		imgURL="img/"+keyLocations[nextKey]+".svg";
-	}
-	else if (/[A-Z]/.test(nextKey)){
-		hintDisplay.innerHTML="Shift+";
-		imgURL="img/"+keyLocations[nextKey.toLowerCase()]+".svg";		
+	} else if (nextKey==""){
+		imgURL='img/go.png';//加一个默认图，比如点赞或者go！之类的
+	} else{
+		test('error:cant find key in keyLocations');//写个兜底的条件，捕捉keyLocations里面找不到的键值
 	}
 	
-	if (/[^\u4e00-\u9fa5a-zA-Z\d,\.]+/.test(nextKey)){
+	if (/[^\u4e00-\u9fa5a-zA-Z\d,\.]+/.test(nextKey)){//这里只考虑加Shift，这个正则表达式可以简化了，我写不来
 		hintDisplay.innerHTML="Shift+";		
 	}
-	
-	if(nextKey==""){
-		imgURL='img/go.png';//加一个默认图，比如点赞或者go！之类的
-	}
+
 	document.getElementById('img').src=imgURL;
 }
 
