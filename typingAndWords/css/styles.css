@@ -92,6 +92,9 @@ background: burlywood;
 	display: block;
 	margin: 0;
 }
+#sH{
+	height: 53px;
+}
 #loader {
   position: absolute;
   left: 50%;

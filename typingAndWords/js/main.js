@@ -218,12 +218,18 @@ function fingerDisplayer(){
 	hintDisplay.innerHTML="";
 	if (nextKey!="" && keyLocations[nextKey]!=null){
 		imgURL="img/"+keyLocations[nextKey]+".svg";
-	}else if (/[A-Z]/.test(nextKey)){
-		hintDisplay.innerHTML="Shift+";
-		imgURL="img/"+keyLocations[nextKey.toLowerCase()]+".svg";
-	}else{
-		document.getElementById('img').src='img/default.svg';//加一个默认图，比如点赞或者go！之类的
 	}
+	else if (/[A-Z]/.test(nextKey)){
+		hintDisplay.innerHTML="Shift+";
+		imgURL="img/"+keyLocations[nextKey.toLowerCase()]+".svg";		
+	}
+	else if (/[^\u4e00-\u9fa5a-zA-Z\d,\.，。]+/.test(nextKey)){
+		hintDisplay.innerHTML="Shift+";		
+		imgURL='';
+	}
+	 else{
+		imgURL='img/go.png';//加一个默认图，比如点赞或者go！之类的
+	}	
 	document.getElementById('img').src=imgURL;
 }
 
