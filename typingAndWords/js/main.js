@@ -125,7 +125,8 @@ var keyLocations = {
 	'1':'left5',
 	'q':'left5',
 	'a':'left5',
-	'z':'left5'
+	'z':'left5',
+	'!':'left5'
 	///add shift key to indicator
 
 }
@@ -201,35 +202,23 @@ function heartsDisplayer(hp){
 
 function fingerDisplayer(){
 	var nextKey=letterDisplay.innerHTML;		
-	// for(let keys in keyLocations){
-	// 	if(nextfinger==keys){
-	// 		for (let keys1 in fingerLocations){
-	// 			if(keyLocations[keys]==keys1){
-	// 				var imgurl=fingerLocations[keys1];
-	// 				document.getElementById('img').src=imgurl;
-	// 			}
-	// 		}
-	// 	}
-	// 	else if(letterDisplay.innerHTML==""){	
-	// 	document.getElementById('img').src='img/default.svg';//加一个默认图
-	// 	}
-	// }
 	var imgURL;
 	hintDisplay.innerHTML="";
-	if (nextKey!="" && keyLocations[nextKey]!=null){
+	if (nextKey!="" && keyLocations[nextKey]!=null){//logic error
 		imgURL="img/"+keyLocations[nextKey]+".svg";
 	}
 	else if (/[A-Z]/.test(nextKey)){
 		hintDisplay.innerHTML="Shift+";
 		imgURL="img/"+keyLocations[nextKey.toLowerCase()]+".svg";		
 	}
-	else if (/[^\u4e00-\u9fa5a-zA-Z\d,\.，。]+/.test(nextKey)){
+	
+	if (/[^\u4e00-\u9fa5a-zA-Z\d,\.]+/.test(nextKey)){
 		hintDisplay.innerHTML="Shift+";		
-		imgURL='';
 	}
-	 else{
+	
+	if(nextKey==""){
 		imgURL='img/go.png';//加一个默认图，比如点赞或者go！之类的
-	}	
+	}
 	document.getElementById('img').src=imgURL;
 }
 
