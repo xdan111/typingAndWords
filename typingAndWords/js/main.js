@@ -128,6 +128,7 @@ var keyLocations = {
 	'{':'right5',
 	'}':'right5',
 	'\'':'right5',
+	'\\':'right5',
 	'|':'right5',
 	'=':'right5',
 	'+':'right5',
