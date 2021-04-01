@@ -60,7 +60,7 @@ class Player{
 	}
 	gameOver(){
 		this.gameState=0;
-		window.location.href="gameover.html?score="+this.score+"&highestCombo="+this.highestCombo +"&timeLeft="+this.timeLeft;
+		window.location.href="gameover.html?score="+this.score+"&highestCombo="+this.highestCombo +"&timeLeft="+this.timeLeft+"&hp="+this.hp;
 	}
 	gamePause(){
 		this.gameState=2;
