@@ -254,6 +254,7 @@ function fingerDisplayer(){
 		imgURL="img/"+keyLocations[nextKey]+".svg";
 	} else if (nextKey==""){
 		imgURL='img/enter.png';//加一个默认图，比如点赞或者go！之类的
+		document.getElementById('sH').innerHTML="<img src='img/go.png' style='margin-top: 10px;'>";
 	} else{
 		test('error:cant find key in keyLocations');//写个兜底的条件，捕捉keyLocations里面找不到的键值
 	}
