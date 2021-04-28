@@ -249,12 +249,18 @@ function heartsDisplayer(hp){
 function fingerDisplayer(){
 	var nextKey=letterDisplay.innerHTML;		
 	var imgURL;
-	hintDisplay.innerHTML="";
+	hintDisplay.innerHTML="&nbsp;";
 	if (nextKey!="" && keyLocations[nextKey]!=null){//这里只考虑查找手指
 		imgURL="img/"+keyLocations[nextKey]+".svg";
 	} else if (nextKey==""){
-		imgURL='img/enter.png';//加一个默认图，比如点赞或者go！之类的
-		document.getElementById('sH').innerHTML="<img src='img/go.GIF' style='margin-top: 10px; height:33px; width: 87px; '>";
+		// for(var i=0;i<3;i++) {
+		// 	setTimeout(function(){ document.getElementById('img').src='img/go.png'; }, 500);
+		// 	setTimeout(function(){ document.getElementById('img').src=''; }, 500);
+		// 	}//先用img闪三次go，再把imgURL赋值成enter
+		hintDisplay.innerHTML="";//把这一行去掉
+		imgURL='img/go.gif';//加一个默认图，比如点赞或者go！之类的
+//		imgURL='img/go.GIF';
+//		document.getElementById('sH').innerHTML="<img src='img/go.GIF' style='margin-top: 10px; height:33px; width: 87px; '>";
 	} else{
 		test('error:cant find key in keyLocations');//写个兜底的条件，捕捉keyLocations里面找不到的键值
 	}
