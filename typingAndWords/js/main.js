@@ -253,7 +253,7 @@ function fingerDisplayer(){
 	if (nextKey!="" && keyLocations[nextKey]!=null){//这里只考虑查找手指
 		imgURL="img/"+keyLocations[nextKey]+".svg";
 	} else if (nextKey==""){
-		imgURL='img/go.png';//加一个默认图，比如点赞或者go！之类的
+		imgURL='img/enter.png';//加一个默认图，比如点赞或者go！之类的
 	} else{
 		test('error:cant find key in keyLocations');//写个兜底的条件，捕捉keyLocations里面找不到的键值
 	}
