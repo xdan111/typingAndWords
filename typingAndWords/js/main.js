@@ -249,17 +249,15 @@ function heartsDisplayer(hp){
 function fingerDisplayer(){
 	var nextKey=letterDisplay.innerHTML;		
 	var imgURL;
-
 	hintDisplay.innerHTML="&nbsp;";//增加一个行高
-
 	if (nextKey!="" && keyLocations[nextKey]!=null){//这里只考虑查找手指
 		imgURL="img/"+keyLocations[nextKey]+".svg";
 		 loadImage(imgURL,  function() {});
 	} else if (nextKey==""){
 		hintDisplay.innerHTML="";//先把这一行行高去掉
 		imgURL='img/go.gif';//加一个默认图，比如点赞或者go！之类的
+    
 		loadImage(imgURL,  function() {});
-		
 	} else{
 		test('error:cant find key in keyLocations');//写个兜底的条件，捕捉keyLocations里面找不到的键值
 	}
