@@ -449,8 +449,7 @@ textArea.onblur =function(){
 		//    }, false);
 		// }	
 function loadImage(url, callback) {       
-   		var img = new Image();
-		img.src = url;
+   		var img = new Image();		
    		if(img.complete) { //Image对象属性complete用于判断图片是否已经存在于浏览器缓存里，若是存在就直接调用回调函数
    		    callback.call(img);
 			console.log("已存在缓存");
@@ -461,6 +460,7 @@ function loadImage(url, callback) {
     		    //当不存在缓存中时，异步调用onload事件里的回调函数
     		    callback.call(img);
 				console.log("加载完成");
-   		}   		
+   		}   
+		img.src = url;
    	}
 		
