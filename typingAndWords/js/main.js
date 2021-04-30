@@ -252,9 +252,12 @@ function fingerDisplayer(){
 	hintDisplay.innerHTML="&nbsp;";//增加一个行高
 	if (nextKey!="" && keyLocations[nextKey]!=null){//这里只考虑查找手指
 		imgURL="img/"+keyLocations[nextKey]+".svg";
+		 loadImage(imgURL,  function() {});
 	} else if (nextKey==""){
 		hintDisplay.innerHTML="";//先把这一行行高去掉
 		imgURL='img/go.gif';//加一个默认图，比如点赞或者go！之类的
+    
+		loadImage(imgURL,  function() {});
 	} else{
 		test('error:cant find key in keyLocations');//写个兜底的条件，捕捉keyLocations里面找不到的键值
 	}
@@ -437,4 +440,27 @@ textArea.onblur =function(){
 		this.classList.remove("focused");
 	}
 };
-
+//预加载图片
+  //  function preloadImg(url) {
+		// var img = new Image();		
+		// img.src = url;		
+		// img.addEventListener('load', function () { // 这里没有考虑error，实际上要考虑
+		//   console.log('加载完毕');
+		//    }, false);
+		// }	
+function loadImage(url, callback) {       
+   		var img = new Image();		
+   		if(img.complete) { //Image对象属性complete用于判断图片是否已经存在于浏览器缓存里，若是存在就直接调用回调函数
+   		    callback.call(img);
+			console.log("已存在缓存");
+   		    return;  //图片存在缓存中时，直接调用完回调函数就返回，不去执行onload事件
+   		}
+   		img.onload = function() {
+   		    img.onload = null;  //防止循环引用
+    		    //当不存在缓存中时，异步调用onload事件里的回调函数
+    		    callback.call(img);
+				console.log("加载完成");
+   		}   
+		img.src = url;
+   	}
+		
