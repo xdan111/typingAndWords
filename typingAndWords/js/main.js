@@ -179,7 +179,7 @@ var keyLocations = {
 
 var imgUrlArr = [
     'img/enter.png',
-    'img/go.Gif',
+    'img/go.gif',
 	'img/go.png',
 	'img/hp.svg',
 	'img/keyboard.svg',
