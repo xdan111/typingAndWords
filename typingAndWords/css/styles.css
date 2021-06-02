@@ -136,3 +136,8 @@ background: burlywood;
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+#letter{
+	border-bottom-color: #87CEEB;
+	border-bottom-width: 3px;
+	border-bottom-style: solid;
+}

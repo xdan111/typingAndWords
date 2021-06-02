@@ -80,7 +80,7 @@ class Player{
 // }
 
 var keyLocations = {
-	' ':'thumb',
+	'&nbsp;':'thumb',
 	"^":'right2',
 	'6':'right2',
 	'y':'right2',
@@ -273,12 +273,14 @@ function fingerDisplayer(){
 		 //loadImage(imgURL,  function() {});
 	} else if (nextKey==""){
 		hintDisplay.innerHTML="";//先把这一行行高去掉
-		imgURL='img/go.gif';//加一个默认图，比如点赞或者go！之类的
+		imgURL='img/go.gif';//加一个默认图，比如点赞或者go！之类的		
 	} else{
 		test('error:cant find key in keyLocations');//写个兜底的条件，捕捉keyLocations里面找不到的键值
 	}
-	
-	if (/[!@#$%^&*()_+{}|:"<>?,A-Z]+/.test(nextKey)){//这里只考虑加Shift，这个正则表达式可以简化了，我写不来
+	if (nextKey=="&nbsp;"){
+		hintDisplay.innerHTML="&nbsp;";
+	}
+	else if (/[!@#$%^&*()_+{}|:"<>?,A-Z]+/.test(nextKey)){//这里只考虑加Shift，这个正则表达式可以简化了，我写不来
 		hintDisplay.innerHTML="Shift+";		
 	}
 
@@ -315,26 +317,49 @@ function fadeOut(element,s){
 
 function onTyping(x){
 	var typingKey=x.key;
-
-	if (typingKey==letterDisplay.innerHTML){//correct typing
-		document.getElementById("test-js").innerHTML = '';
-		fadeInOut(scoreChangeDisplay,100,player.scorer(1));
-	}else if(typingKey=="Enter" && letterDisplay.innerHTML==""){//next sentence
-		document.getElementById("test-js").innerHTML = '';
-	}else if(letterDisplay.innerHTML != "") {// wrong typing 如果输入错误就跳出onTyping函数
-		player.hper(-1);
-		if(player.hp<=0){player.gameOver()};
-//		gameover(player.hp);
-		hpDisplay.innerHTML=heartsDisplayer(player.hp);
-		letterDisplay.classList.toggle("yellow",false);
-		letterDisplay.classList.toggle("red",true); 
-		fadeInOut(scoreChangeDisplay,100,player.scorer(0));	
-		return;
-	}else {
-		test('Press "Enter" to continue.');
-		return;
+	console.log(typingKey);
+	if(typingKey==' '){
+		typingKey=typingKey.replace(' ','&nbsp;');
+		if (typingKey==letterDisplay.innerHTML){//correct typing
+				document.getElementById("test-js").innerHTML = '';
+				fadeInOut(scoreChangeDisplay,100,player.scorer(1));
+			}else if(typingKey=="Enter" && letterDisplay.innerHTML==""){//next sentence
+				document.getElementById("test-js").innerHTML = '';
+			}else if(letterDisplay.innerHTML != "") {// wrong typing 如果输入错误就跳出onTyping函数
+				player.hper(-1);
+				if(player.hp<=0){player.gameOver()};
+		//		gameover(player.hp);
+				hpDisplay.innerHTML=heartsDisplayer(player.hp);
+				letterDisplay.classList.toggle("yellow",false);		
+				letterDisplay.classList.toggle("red",true);
+				fadeInOut(scoreChangeDisplay,100,player.scorer(0));	
+				return;
+			}else {
+				test('Press "Enter" to continue.');
+				return;
+			}
+		
 	}
-	
+	else{
+	 if (typingKey==letterDisplay.innerHTML){//correct typing
+	 		document.getElementById("test-js").innerHTML = '';
+	 		fadeInOut(scoreChangeDisplay,100,player.scorer(1));
+	 	}else if(typingKey=="Enter" && letterDisplay.innerHTML==""){//next sentence
+	 		document.getElementById("test-js").innerHTML = '';
+	 	}else if(letterDisplay.innerHTML != "") {// wrong typing 如果输入错误就跳出onTyping函数
+	 		player.hper(-1);
+	 		if(player.hp<=0){player.gameOver()};
+	 //		gameover(player.hp);
+	 		hpDisplay.innerHTML=heartsDisplayer(player.hp);
+	 		letterDisplay.classList.toggle("yellow",false);		
+	 		letterDisplay.classList.toggle("red",true);
+	 		fadeInOut(scoreChangeDisplay,100,player.scorer(0));	
+	 		return;
+	 	}else {
+	 		test('Press "Enter" to continue.');
+	 		return;
+	 	}
+	}
 	var yieldedObj=word.next();
 	if (yieldedObj.done){
 		test("done. Reloading...");
@@ -365,7 +390,9 @@ function onTyping(x){
 		document.getElementById("test-js").innerHTML = 'Press "Enter" to Continue';		
 //		document.getElementById("show").style.display = "none";
 	}else if (letterDisplay.innerHTML==" "){
-		document.getElementById("test-js").innerHTML = 'Press "Space" bar';		
+		letterDisplay.innerHTML="&nbsp;";
+		document.getElementById("test-js").innerHTML = 'Press "Space" bar';
+		
 	}
 	else{
 		document.getElementById("test-js").innerHTML = 'test-js';	
@@ -386,6 +413,7 @@ var sentenceDisplay1=document.getElementById('sentence1');
 var wordDisplay0=document.getElementById('word0');
 var wordDisplay1=document.getElementById('word1');
 var letterDisplay=document.getElementById('letter');
+var letterbackground=document.getElementById('letterbackground');
 var hintDisplay=document.getElementById('showHint');
 var hpDisplay=document.getElementById('hp');
 var scoreDisplay=document.getElementById('score');
@@ -457,7 +485,7 @@ textArea.onblur =function(){
 		this.classList.remove("focused");
 	}
 };
-	
+	 
 function loadImage(list, callback){  
     var images =[],count=0;
     for(i in list){  
@@ -472,3 +500,23 @@ function loadImage(list, callback){
         images[i].src = list[i];  
     }  
 	}
+// function typing(typingKey){
+// 	if (typingKey==letterDisplay.innerHTML){//correct typing
+// 				document.getElementById("test-js").innerHTML = '';
+// 				fadeInOut(scoreChangeDisplay,100,player.scorer(1));
+// 			}else if(typingKey=="Enter" && letterDisplay.innerHTML==""){//next sentence
+// 				document.getElementById("test-js").innerHTML = '';
+// 			}else if(letterDisplay.innerHTML != "") {// wrong typing 如果输入错误就跳出onTyping函数
+// 				player.hper(-1);
+// 				if(player.hp<=0){player.gameOver()};
+// 		//		gameover(player.hp);
+// 				hpDisplay.innerHTML=heartsDisplayer(player.hp);
+// 				letterDisplay.classList.toggle("yellow",false);		
+// 				letterDisplay.classList.toggle("red",true);
+// 				fadeInOut(scoreChangeDisplay,100,player.scorer(0));	
+// 				return;
+// 			}else {
+// 				test('Press "Enter" to continue.');
+// 				return;
+// 			}
+// 			}
