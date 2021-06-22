@@ -3,7 +3,7 @@ background: burlywood;
 }
 .red {
     color: red;
-	font-size: 50px;
+	font-size: 40px;
 }
 #keyboard{
 	text-align: center;
@@ -50,16 +50,18 @@ background: burlywood;
 }
 #word0{
 	color: green;
+	font-style: oblique;
 }
 .yellow{
 	color: #EE7752;
-	font-style: italic;
-	font-size: 40px;
+/*	font-style: italic;*/
+	font-style: oblique;
+/*	font-size: 40px;*/
 }
 #word1{
 	color:#8A2BE2;
 	font-style: oblique;
-	font-size: 40px;
+/*	font-size: 40px;*/
 }
 #show{
 	text-align: center;
